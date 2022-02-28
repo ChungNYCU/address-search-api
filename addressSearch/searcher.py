@@ -1,7 +1,7 @@
 def find_match_address(req_body, json_database):
 
     search_result = []
-    
+
     try:
         countries = req_body['searchCountries'].lower().strip().split(' ')
     except:
@@ -18,12 +18,13 @@ def find_match_address(req_body, json_database):
             continue
 
         for key in req_body:
-            try:
-                if(req_body[key].strip().lower() != address[key].strip().lower()):
-                    isValid = False
-                    break
-            except:
-                continue
+            if(req_body[key]):
+                try:
+                    if(req_body[key].strip().lower() != address[key].strip().lower()):
+                        isValid = False
+                        break
+                except:
+                    continue
 
         if(isValid):
             search_result.append(address)
