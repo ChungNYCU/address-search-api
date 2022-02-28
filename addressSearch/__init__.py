@@ -27,15 +27,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         search_result = searcher.find_match_address(req_body, data)
     except Exception as e:
-        return func.HttpResponse("Cannot search address: " + str(e), status_code=400)
+        return func.HttpResponse("Cannot search address with attribute: " + str(e), status_code=400)
 
-    # for i in data:
-    #     isValid = True
-    #     for key in req_body:
-    #         if(i[key].strip().lower() != req_body[key].strip().lower()):
-    #             isValid = False
-    #             break
-    #     if(isValid):
-    #         search_result.append(i)
     
     return func.HttpResponse(json.dumps(search_result), status_code=200)
