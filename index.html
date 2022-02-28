@@ -51,7 +51,7 @@
 <script type="text/javascript">
   (function(){
     var selectUSA = document.getElementById('usa');
-    // var selectIndia = document.getElementById('india');
+    var selectIndia = document.getElementById('india');
     var selectSpain = document.getElementById('spain');
     var selectJapan = document.getElementById('japan');
     var selectGermany = document.getElementById('germany');
@@ -265,6 +265,26 @@
       }
     });
 
+    selectIndia.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var locality = document.getElementById('locality');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        city.disabled = false;
+        locality.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+      }else{
+        city.disabled = true;
+        locality.disabled = false;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
 
 
   })();
