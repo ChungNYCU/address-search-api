@@ -56,10 +56,10 @@
     var selectJapan = document.getElementById('japan');
     // var selectGermany = document.getElementById('germany');
     // var selectNSkorea = document.getElementById('nskorea');
-    // var selectBrazil = document.getElementById('brazil');
+    var selectBrazil = document.getElementById('brazil');
     // var selectUK = document.getElementById('uk');
     // var selectMexico = document.getElementById('mexico');
-    // var selectCanada = document.getElementById('canada');
+    var selectCanada = document.getElementById('canada');
 
     selectUSA.addEventListener('click', function(){
       var state = document.getElementById('state');
@@ -91,9 +91,9 @@
     selectJapan.addEventListener('click', function(){
       var prefecture = document.getElementById('prefecture');
       var city = document.getElementById('city');
-      var town = document.getElementById('town')
-      var steet = document.getElementById('street')
-      var zip = document.getElementById('zip')
+      var town = document.getElementById('town');
+      var steet = document.getElementById('street');
+      var zip = document.getElementById('zip');
       if (this.checked){
         prefecture.disabled = false;
         city.disabled = false;
@@ -108,6 +108,45 @@
         zip.disabled = true;
       }
     });
+
+    selectBrazil.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var street = document.getElementById('street');
+      var bhn = document.getElementById('bhn');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        street.disabled = false;
+        bhn.disabled = false;
+        zip.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        street.disabled = true;
+        bhn.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
+    selectCanada.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var street = document.getElementById('street');
+      var as = document.getElementById('as');
+      if (this.checked){
+        province.disabled = false;
+        street.disabled = false;
+        as.disabled = false;
+      }else{
+        province.disabled = true;
+        street.disabled = true;
+        as.disabled = true;        
+      }
+    });
+
+
+
 
   })();
 
