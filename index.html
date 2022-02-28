@@ -112,18 +112,30 @@
     selectBrazil.addEventListener('click', function(){
       var province = document.getElementById('province');
       var city = document.getElementById('city');
+      var sector = document.getElementById('sector');
+      var block = document.getElementById('block');
+      var quadrant = document.getElementById('quadrant');
+      var neighborhood = document.getElementById('neighborhood');
       var street = document.getElementById('street');
       var bhn = document.getElementById('bhn');
       var zip = document.getElementById('zip');
       if (this.checked){
         province.disabled = false;
         city.disabled = false;
+        sector.disabled = false;
+        block.disabled = false;
+        quadrant.disabled = false;
+        neighborhood.disabled = false;
         street.disabled = false;
         bhn.disabled = false;
         zip.disabled = false;
       }else{
         province.disabled = true;
         city.disabled = true;
+        sector.disabled = true;
+        block.disabled = true;
+        quadrant.disabled = true;
+        neighborhood.disabled = true;
         street.disabled = true;
         bhn.disabled = true;
         zip.disabled = true;
