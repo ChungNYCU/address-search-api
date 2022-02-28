@@ -36,7 +36,7 @@
     Village: <input id="village" name="village" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Subdivision: <input id="subdivision" name="subdivision" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Sector: <input id="sector" name="sector" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Quadant: <input id="quadant" name="quadant" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
+    Quadrant: <input id="quadrant" name="quadrant" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
     Block: <input id="block" name="block" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Neighborhood: <input id="neighborhood" name="neighborhood" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Quarter: <input id="quarter" name="quarter" style=" width: 10%" type="text" autocomplete="off" disabled="true">
@@ -51,14 +51,14 @@
 <script type="text/javascript">
   (function(){
     var selectUSA = document.getElementById('usa');
-    // var selectIndia = document.getElementById('india');
-    // var selectSpain = document.getElementById('spain');
+    var selectIndia = document.getElementById('india');
+    var selectSpain = document.getElementById('spain');
     var selectJapan = document.getElementById('japan');
     var selectGermany = document.getElementById('germany');
-    // var selectNSkorea = document.getElementById('nskorea');
+    var selectNSkorea = document.getElementById('nskorea');
     var selectBrazil = document.getElementById('brazil');
-    // var selectUK = document.getElementById('uk');
-    // var selectMexico = document.getElementById('mexico');
+    var selectUK = document.getElementById('uk');
+    var selectMexico = document.getElementById('mexico');
     var selectCanada = document.getElementById('canada');
 
     selectUSA.addEventListener('click', function(){
@@ -112,18 +112,30 @@
     selectBrazil.addEventListener('click', function(){
       var province = document.getElementById('province');
       var city = document.getElementById('city');
+      var sector = document.getElementById('sector');
+      var block = document.getElementById('block');
+      var quadrant = document.getElementById('quadrant');
+      var neighborhood = document.getElementById('neighborhood');
       var street = document.getElementById('street');
       var bhn = document.getElementById('bhn');
       var zip = document.getElementById('zip');
       if (this.checked){
         province.disabled = false;
         city.disabled = false;
+        sector.disabled = false;
+        block.disabled = false;
+        quadrant.disabled = false;
+        neighborhood.disabled = false;
         street.disabled = false;
         bhn.disabled = false;
         zip.disabled = false;
       }else{
         province.disabled = true;
         city.disabled = true;
+        sector.disabled = true;
+        block.disabled = true;
+        quadrant.disabled = true;
+        neighborhood.disabled = true;
         street.disabled = true;
         bhn.disabled = true;
         zip.disabled = true;
@@ -166,10 +178,128 @@
       }
     });
 
+    selectNSkorea.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var subdivision = document.getElementById('subdivision');
+      var bhn = document.getElementById('bhn');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        subdivision.disabled = false;
+        bhn.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        subdivision.disabled = true;
+        bhn.disabled = true;     
+      }
+    });
+
+    selectUK.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        city.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+      }else{
+        city.disabled = true;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
+    selectSpain.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var town = document.getElementById('town');
+      var locality = document.getElementById('locality');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      var bhn = document.getElementById('bhn');
+      if (this.checked){
+        city.disabled = false;
+        town.disabled = false;
+        locality.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+        bhn.disabled = false;
+      }else{
+        city.disabled = true;
+        town.disabled = true;
+        locality.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+        bhn.disabled = true;
+      }
+    });
+
+    selectMexico.addEventListener('click', function(){
+      var state = document.getElementById('state');
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var locality = document.getElementById('locality');
+      var village = document.getElementById('village');
+      var neighborhood = document.getElementById('neighborhood');
+      var quarter = document.getElementById('quarter');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      var bhn = document.getElementById('bhn');
+      var as = document.getElementById('as');
+      if (this.checked){
+        state.disabled = false;
+        province.disabled = false;
+        city.disabled = false;
+        locality.disabled = false;
+        village.disabled = false;
+        neighborhood.disabled = false;
+        quarter.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+        bhn.disabled = false;
+        as.disabled = false;
+      }else{
+        state.disabled = true;
+        province.disabled = true;
+        city.disabled = true;
+        locality.disabled = true;
+        village.disabled = true;
+        neighborhood.disabled = true;
+        quarter.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+        bhn.disabled = true;
+        as.disabled = true;
+      }
+    });
+
+    selectIndia.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var locality = document.getElementById('locality');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        city.disabled = false;
+        locality.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+      }else{
+        city.disabled = true;
+        locality.disabled = false;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
 
   })();
-
-
 
 </script>
 
