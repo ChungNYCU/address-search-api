@@ -56,7 +56,7 @@
     var selectJapan = document.getElementById('japan');
     // var selectGermany = document.getElementById('germany');
     // var selectNSkorea = document.getElementById('nskorea');
-    // var selectBrazil = document.getElementById('brazil');
+    var selectBrazil = document.getElementById('brazil');
     // var selectUK = document.getElementById('uk');
     // var selectMexico = document.getElementById('mexico');
     // var selectCanada = document.getElementById('canada');
@@ -91,9 +91,9 @@
     selectJapan.addEventListener('click', function(){
       var prefecture = document.getElementById('prefecture');
       var city = document.getElementById('city');
-      var town = document.getElementById('town')
-      var steet = document.getElementById('street')
-      var zip = document.getElementById('zip')
+      var town = document.getElementById('town');
+      var steet = document.getElementById('street');
+      var zip = document.getElementById('zip');
       if (this.checked){
         prefecture.disabled = false;
         city.disabled = false;
@@ -105,6 +105,28 @@
         city.disabled = true;
         town.disabled = true;
         street.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
+
+    selectBrazil.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var street = document.getElementById('street');
+      var bhn = document.getElementById('bhn');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        street.disabled = false;
+        bhn.disabled = false;
+        zip.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        street.disabled = true;
+        bhn.disabled = true;
         zip.disabled = true;
       }
     });
