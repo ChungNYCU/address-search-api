@@ -55,7 +55,7 @@
     // var selectSpain = document.getElementById('spain');
     var selectJapan = document.getElementById('japan');
     var selectGermany = document.getElementById('germany');
-    // var selectNSkorea = document.getElementById('nskorea');
+    var selectNSkorea = document.getElementById('nskorea');
     var selectBrazil = document.getElementById('brazil');
     // var selectUK = document.getElementById('uk');
     // var selectMexico = document.getElementById('mexico');
@@ -166,10 +166,31 @@
       }
     });
 
+    selectNSkorea.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var subdivision = document.getElementById('subdivision');
+      var bhn = document.getElementById('bhn');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        subdivision.disabled = false;
+        bhn.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        subdivision.disabled = true;
+        bhn.disabled = true;     
+      }
+    });
+
+
+
+
+
+
 
   })();
-
-
 
 </script>
 
