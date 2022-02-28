@@ -59,7 +59,7 @@
     var selectBrazil = document.getElementById('brazil');
     // var selectUK = document.getElementById('uk');
     // var selectMexico = document.getElementById('mexico');
-    // var selectCanada = document.getElementById('canada');
+    var selectCanada = document.getElementById('canada');
 
     selectUSA.addEventListener('click', function(){
       var state = document.getElementById('state');
@@ -109,7 +109,6 @@
       }
     });
 
-
     selectBrazil.addEventListener('click', function(){
       var province = document.getElementById('province');
       var city = document.getElementById('city');
@@ -130,6 +129,24 @@
         zip.disabled = true;
       }
     });
+
+    selectCanada.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var street = document.getElementById('street');
+      var as = document.getElementById('as');
+      if (this.checked){
+        province.disabled = false;
+        street.disabled = false;
+        as.disabled = false;
+      }else{
+        province.disabled = true;
+        street.disabled = true;
+        as.disabled = true;        
+      }
+    });
+
+
+
 
   })();
 
