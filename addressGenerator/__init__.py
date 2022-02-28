@@ -12,8 +12,29 @@ def getRandomNumber(title, num):
 
 def getJapanZip():
     print(str(random.randint(100, 999)) + "-" + str(random.randint(1000, 9999)))
+
+
 def getBarzilZip():
     print(str(random.randint(10000, 99999)) + "-" + str(random.randint(100, 999)))
+
+
+def getCanadaUnit():
+    print(str(random.randint(10, 99)) + "-" + str(random.randint(100, 999)))
+
+
+def getRandomPostalCode():
+    abc = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+           "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    num = len(abc)-1
+    randstr = abc[random.randint(0,num)]
+    randstr1 = abc[random.randint(0, num)]
+    randstr2 = abc[random.randint(0, num)]
+    randstr3 = abc[random.randint(0, num)]
+    randstr4 = abc[random.randint(0, num)]
+    randstr5 = abc[random.randint(0, num)]
+
+    print(randstr+randstr1+randstr2+ " " +randstr3+randstr4+randstr5)
+
 
 countries = ["Brazil", "Canada", "Germany", "India", "Japan", "North and South Korea", "Mexico", "Spain", "UK", "USA"]
 
@@ -629,8 +650,76 @@ brazilNeighborhood = ['Falcão',
                       'Parangaba',
                       'Rodolfo Teófilo, Fortaleza']
 
+canadaProvince = ['AB',
+                  'BC',
+                  'MB',
+                  'NB',
+                  'NL',
+                  'NT',
+                  'NS',
+                  'NU',
+                  'ON',
+                  'PE',
+                  'QC',
+                  'SK',
+                  'YT']
+canadaCities = ['Abbotsford',
+                'Armstrong',
+                'Burnaby',
+                'Campbell River',
+                'Castlegar',
+                'Chilliwack',
+                'Colwood',
+                'Coquitlam',
+                'Courtenay',
+                'Cranbrook',
+                'Dawson Creek',
+                'Delta',
+                'Duncan',
+                'Enderby',
+                'Fernie',
+                'Fort St. John',
+                'Grand Forks',
+                'Greenwood',
+                'Kamloops',
+                'Kelowna',
+                'Kimberley',
+                'Langford',
+                'Langley',
+                'Maple Ridge',
+                'Merritt',
+                'Mission',
+                'Nanaimo',
+                'Nelson',
+                'New Westminster',
+                'North Vancouver',
+                'Parksville',
+                'Penticton',
+                'Pitt Meadows',
+                'Port Alberni',
+                'Port Coquitlam',
+                'Port Moody',
+                'Powell River',
+                'Prince George',
+                'Prince Rupert',
+                'Quesnel',
+                'Revelstoke',
+                'Richmond',
+                'Rossland',
+                'Salmon Arm',
+                'Surrey',
+                'Terrace',
+                'Trail',
+                'Vancouver[a]',
+                'Vernon',
+                'Victoria[b]',
+                'West Kelowna',
+                'White Rock',
+                'Williams Lake']
 
 for x in range(200):
-    #getRandomValue(brazilCities)
+    #getRandomValue(canadaCities)
     # getRandomNumber("", 200)
-    getRandomNumber("",99999)
+    # getRandomNumber("",99999)
+    # getCanadaUnit()
+    getRandomPostalCode()
