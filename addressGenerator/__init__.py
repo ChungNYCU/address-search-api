@@ -7,7 +7,7 @@ def getRandomValue(addr):
 
 
 def getRandomNumber(title, num):
-    print(title + str(random.randint(100, num)))
+    print(title + str(random.randint(0, num)))
 
 
 def getJapanZip():
@@ -819,8 +819,8 @@ germanyCities =['Berlin',
 'Villingen-Schwenningen']
 
 for x in range(200):
-    getRandomValue(germanyCities)
+    #getRandomValue(germanyCities)
     # getRandomNumber("", 200)
-    # getRandomNumber("",99999)
+     getRandomNumber("Flat No. ",1000)
     # getCanadaUnit()
     #getRandomNumber("Postfach ",999)
