@@ -19,13 +19,13 @@
     Canada: <input type="checkbox" id="canada" name="canada" class="form-control"><br>
   </P>
 
-  <h2>Provide your name:</h2>
+  <h2>Provide a name:</h2>
   <p>
     First Name: <input id="fname" name="fname" style=" width: 10%" type="text" placeholder="Skypioneer" autocomplete="off">
     Last Name: <input id="lname" name="lname" style=" width: 10%" type="text" placeholder="Wang" autocomplete="off">
   </p>
 
-  <h2>Provide partial a address(es)</h2>
+  <h2>Provide a partial address(es)</h2>
   <P>
     State: <input id="state" name="state" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Province: <input id="province" name="province" style=" width: 10%" type="text" autocomplete="off" disabled="true">
@@ -48,5 +48,72 @@
   </P>
   <input type="submit" value="Search" class="btn btn-info">
 </form>
+<script type="text/javascript">
+  (function(){
+    var selectUSA = document.getElementById('usa');
+    // var selectIndia = document.getElementById('india');
+    // var selectSpain = document.getElementById('spain');
+    var selectJapan = document.getElementById('japan');
+    // var selectGermany = document.getElementById('germany');
+    // var selectNSkorea = document.getElementById('nskorea');
+    // var selectBrazil = document.getElementById('brazil');
+    // var selectUK = document.getElementById('uk');
+    // var selectMexico = document.getElementById('mexico');
+    // var selectCanada = document.getElementById('canada');
+
+    selectUSA.addEventListener('click', function(){
+      var state = document.getElementById('state');
+      var city = document.getElementById('city');
+      var street = document.getElementById('street');
+      var bhn = document.getElementById('bhn');
+      var as = document.getElementById('as');
+      var zip = document.getElementById('zip');
+      var pob = document.getElementById('pob');
+      if (this.checked){
+        state.disabled = false;
+        city.disabled = false;
+        street.disabled = false;
+        bhn.disabled = false;
+        as.disabled = false;
+        zip.disabled = false;
+        pob.disabled = false; 
+      }else{
+        state.disabled = true;
+        city.disabled = true;
+        street.disabled = true;
+        bhn.disabled = true;
+        as.disabled = true;
+        zip.disabled = true;
+        pob.disabled = true; 
+      }
+    });
+
+    selectJapan.addEventListener('click', function(){
+      var prefecture = document.getElementById('prefecture');
+      var city = document.getElementById('city');
+      var town = document.getElementById('town')
+      var steet = document.getElementById('street')
+      var zip = document.getElementById('zip')
+      if (this.checked){
+        prefecture.disabled = false;
+        city.disabled = false;
+        town.disabled = false;
+        steet.disabled = false;
+        zip.disabled = false;
+      }else{
+        prefecture.disabled = true;
+        city.disabled = true;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
+  })();
+
+
+
+</script>
+
 </body>
 </html>
