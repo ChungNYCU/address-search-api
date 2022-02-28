@@ -57,7 +57,7 @@
     var selectGermany = document.getElementById('germany');
     var selectNSkorea = document.getElementById('nskorea');
     var selectBrazil = document.getElementById('brazil');
-    // var selectUK = document.getElementById('uk');
+    var selectUK = document.getElementById('uk');
     // var selectMexico = document.getElementById('mexico');
     var selectCanada = document.getElementById('canada');
 
@@ -184,7 +184,23 @@
       }
     });
 
-
+    selectUK.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        city.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+      }else{
+        city.disabled = true;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
 
 
 
