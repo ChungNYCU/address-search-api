@@ -9,6 +9,9 @@ def getRandomValue(addr):
 def getRandomNumber(title, num):
     print(title + str(random.randint(0, num)))
 
+def getRandomEvenNumber():
+    print(random.randrange(0, 1000, 2))
+
 
 def getJapanZip():
     print(str(random.randint(100, 999)) + "-" + str(random.randint(1000, 9999)))
@@ -34,6 +37,9 @@ def getRandomPostalCode():
     randstr5 = abc[random.randint(0, num)]
 
     print(randstr+randstr1+randstr2+ " " +randstr3+randstr4+randstr5)
+
+def getKoreaZip():
+    print(str(random.randint(100, 999)) + "-" + str(random.randint(100, 999)))
 
 
 countries = ["Brazil", "Canada", "Germany", "India", "Japan", "North and South Korea", "Mexico", "Spain", "UK", "USA"]
@@ -818,9 +824,13 @@ germanyCities =['Berlin',
 'Dessau',
 'Villingen-Schwenningen']
 
-for x in range(200):
+for x in range(100):
     #getRandomValue(germanyCities)
     # getRandomNumber("", 200)
-     getRandomNumber("Flat No. ",1000)
+     #getRandomNumber("Flat No. ",1000)
     # getCanadaUnit()
     #getRandomNumber("Postfach ",999)
+    #getKoreaZip()
+    getRandomEvenNumber()
+
+
