@@ -47,9 +47,60 @@
     Zip: <input id="zip" name="zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     POB: <input id="pob" name="pob" style=" width: 10%" type="text" autocomplete="off" disabled="true">
   </P>
-  <input type="submit" value="Search" class="btn btn-info">
+  <button onclick="generate_seachCountries()" class="btn btn-info">Search</button>
+  <input type="hidden" id="seachCountries" name="searchCounties" value="">
 </form>
 <script type="text/javascript">
+  function generate_searchCounties(){
+    var usa = document.getElementById('usa').checked;
+    var india = document.getElementById('india').checked;
+    var spain = document.getElementById('spain').checked;
+    var japan = document.getElementById('japan').checked;
+    var germany = document.getElementById('germany').checked;
+    var skorea = document.getElementById('skorea').checked;
+    var nkorea = document.getElementById('nkorea').checked;
+    var brazil = document.getElementById('brazil').checked;
+    var uk = document.getElementById('uk').checked;
+    var mexico = document.getElementById('mexico').checked;
+    var canada = document.getElementById('canada').checked;
+    var seachCountries = ''
+    
+    if (usa){
+      seachCountries += 'usa' + ' '
+    }
+    if (india){
+      seachCountries += 'india' + ' '
+    }
+    if (spain){
+      seachCountries += 'spain' + ' '
+    }
+    if (japan){
+      seachCountries += 'japan' + ' '
+    }
+    if (germany){
+      seachCountries += 'germany' + ' '
+    }
+    if (skorea){
+      seachCountries += 'skorea' + ' '
+    }
+    if (nkorea){
+      seachCountries += 'nkorea' + ' '
+    }
+    if (brazil){
+      seachCountries += 'brazil' + ' '
+    }
+    if (uk){
+      seachCountries += 'uk' + ' '
+    }
+    if (mexico){
+      seachCountries += 'mexico' + ' '
+    }
+    if (canada){
+      seachCountries += 'canada' + ' '
+    }
+    document.getElementById('seachCountries').value = seachCountries;
+  }
+
   (function(){
     var selectUSA = document.getElementById('usa');
     var selectIndia = document.getElementById('india');
@@ -314,8 +365,6 @@
         zip.disabled = true;
       }
     });
-
-
   })();
 
 </script>
