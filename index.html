@@ -7,17 +7,17 @@
 <form action="https://address-search.azurewebsites.net/api/addresssearch" method="post">
   <h2>Select a country(ies):</h2>
   <P>
-    USA: <input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()">
-    India: <input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()">
-    Spain: <input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()">
-    Japan: <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()">
-    Germany: <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()">
-    Canada: <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><br>
-    South Korea: <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()">
-    North Korea: <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()">
-    Brazil: <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()">
-    UK: <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()">
-    Mexico: <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><br>
+    <input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()"><label for="usa">USA</label>
+    <input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()"><label for="usa">India</label>
+    <input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()"><label for="usa">Spain</label>
+    <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()"><label for="usa">Japan</label>
+    <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()"><label for="usa">Germany</label>
+    <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><label for="usa">Canada</label><br>
+    <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">South Korea</label>
+    <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">North Korea</label>
+    <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()"><label for="usa">Brazil</label>
+    <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()"><label for="usa">UK</label>
+    <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><label for="usa">Mexico</label><br>
   </P>
 
   <h2>Provide a name:</h2>
@@ -41,7 +41,7 @@
     Block: <input id="block" name="block" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Neighborhood: <input id="neighborhood" name="neighborhood" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Quarter: <input id="quarter" name="quarter" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Street: <input id="street" name="street" style=" width: 16%" type="text" autocomplete="off" disabled="true"><br>
+    Street: <input id="street" name="street" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
     Building/House No.: <input id="bhn" name="bhn" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Apt/Suite: <input id="as" name="as" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Zip: <input id="zip" name="zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
@@ -51,8 +51,7 @@
   <input type="hidden" id="seachCountries" name="searchCounties" value="">
 </form>
 
-
-<script>
+<script type="text/javascript">
   function merge_array(res, country){
     for (const element of country) {
         res.push(element);
@@ -61,16 +60,16 @@
   function set_text_input() {
     
     const usa = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"];
-    const india = ["Prefecture", "City", "Town", "Street", "Zip"];
+    const india = ["City", "Town", "Locality", "Street", "Zip"];
     const spain = ["City", "Town", "Street", "Zip", "Building/House No"];
     const japan = ["Prefecture", "City", "Town", "Street", "Zip"];
     const germany = ["City", "Town", "Street", "Zip", "POB"];
     const skorea = ["Province", "City", "Subdivision", "Building/House No"];
     const nkorea = ["Province", "City", "Street", "Building/House No"];
-    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip"];
+    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip", "POB"];
     const uk = ["City", "Town", "Street", "Zip"];
     const mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "Building/House No", "Apt/Suite"];
-    const canada = ["Province", "Street", "Apt/Suite", "Zip"];
+    const canada = ["Province", "City", "Street", "Apt/Suite", "Zip"];
 
     var selectUSA = document.getElementById('usa').checked;
     var selectIndia = document.getElementById('india').checked;
@@ -213,7 +212,7 @@
       prefecture.disabled = true;
     }
   }
-
+  
 </script>
 
 </body>
