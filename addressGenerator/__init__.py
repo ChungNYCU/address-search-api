@@ -7,7 +7,7 @@ def getRandomValue(addr):
 
 
 def getRandomNumber(title, num):
-    print(title + str(random.randint(0, 1000)))
+    print(title + str(random.randint(0, 100)))
 
 def getRandomEvenNumber():
     print(random.randrange(0, 1000, 2))
