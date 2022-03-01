@@ -7,23 +7,23 @@
 <form action="https://address-search.azurewebsites.net/api/addresssearch" method="post">
   <h2>Select a country(ies):</h2>
   <P>
-    USA: <input type="checkbox" id="usa" name="usa" class="form-control">
-    India: <input type="checkbox" id="india" name="india" class="form-control">
-    Spain: <input type="checkbox" id="spain" name="spain" class="form-control">
-    Japan: <input type="checkbox" id="japan" name="japan" class="form-control">
-    Germany: <input type="checkbox" id="germany" name="germany" class="form-control">
-    Canada: <input type="checkbox" id="canada" name="canada" class="form-control"><br>
-    South Korea: <input type="checkbox" id="skorea" name="nskorea" class="form-control">
-    North Korea: <input type="checkbox" id="nkorea" name="nskorea" class="form-control">
-    Brazil: <input type="checkbox" id="brazil" name="brazil" class="form-control">
-    UK: <input type="checkbox" id="uk" name="uk" class="form-control">
-    Mexico: <input type="checkbox" id="mexico" name="mexico" class="form-control"><br>
+    USA: <input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()">
+    India: <input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()">
+    Spain: <input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()">
+    Japan: <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()">
+    Germany: <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()">
+    Canada: <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><br>
+    South Korea: <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()">
+    North Korea: <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()">
+    Brazil: <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()">
+    UK: <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()">
+    Mexico: <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><br>
   </P>
 
   <h2>Provide a name:</h2>
   <p>
-    First Name: <input id="fname" name="fname" style=" width: 10%" type="text" placeholder="Skypioneer" autocomplete="off">
-    Last Name: <input id="lname" name="lname" style=" width: 10%" type="text" placeholder="Wang" autocomplete="off">
+    First Name: <input id="fname" name="fname" style=" width: 10%" type="text" placeholder="" autocomplete="off">
+    Last Name: <input id="lname" name="lname" style=" width: 10%" type="text" placeholder="" autocomplete="off">
   </p>
 
   <h2>Provide a partial address(es)</h2>
@@ -50,58 +50,169 @@
   <button onclick="generate_seachCountries()" class="btn btn-info">Search</button>
   <input type="hidden" id="seachCountries" name="searchCounties" value="">
 </form>
-<script type="text/javascript">
-  countries = []
-  use = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"]
-  india = ["Prefecture", "City", "Town", "Street", "Zip"]
-  spain = ["City", "Town", "Street", "Zip", "Building/House No"]
-  japan = ["Prefecture", "City", "Town", "Street", "Zip"]
-  germany = ["City", "Town", "Street", "Zip", "POB"]
-  skorea = ["Province", "City", "Subdivision", "Building/House No"]
-  nkorea = ["Province", "City", "Street", "Building/House No"]
-  brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip"]
-  uk = ["City", "Town", "Street", "Zip"]
-  mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "Building/House No", "Apt/Suite"]
-  canada = ["Province", "Street", "Apt/Suite"]
 
-  (function(){
-    var selectUSA = document.getElementById('usa');
-    var selectIndia = document.getElementById('india');
-    var selectSpain = document.getElementById('spain');
-    var selectJapan = document.getElementById('japan');
-    var selectGermany = document.getElementById('germany');
-    var selectSKorea = document.getElementById('skorea');
-    var selectNKorea = document.getElementById('nkorea');
-    var selectBrazil = document.getElementById('brazil');
-    var selectUK = document.getElementById('uk');
-    var selectMexico = document.getElementById('mexico');
-    var selectCanada = document.getElementById('canada');
-
-    function add_C(country){
-    countries.push(country)
-    };
-
-    function remove_C(country){
-      for (let i = 0; i < countries.length; i++) {
-        if (countries[i] == country) {
-            const removedElements = countries.splice(i, 1);
-            break;
-        }
-      }  
-    }
-
-    function set_countries(countries){
-      res = []
-      for (let i = 0; i < countries.length; i++){
-        res = [...new Set([...res, ...countries[i]])];
+<script>
+  function merge_array(res, country){
+    for (const element of country) {
+        res.push(element);
       }
-      return res;
-    };
+  }
 
-    if (document.getElementById('usa').checked){
-      
+  function set_text_input() {
+    
+    const usa = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"];
+    const india = ["Prefecture", "City", "Town", "Street", "Zip"];
+    const spain = ["City", "Town", "Street", "Zip", "Building/House No"];
+    const japan = ["Prefecture", "City", "Town", "Street", "Zip"];
+    const germany = ["City", "Town", "Street", "Zip", "POB"];
+    const skorea = ["Province", "City", "Subdivision", "Building/House No"];
+    const nkorea = ["Province", "City", "Street", "Building/House No"];
+    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip"];
+    const uk = ["City", "Town", "Street", "Zip"];
+    const mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "Building/House No", "Apt/Suite"];
+    const canada = ["Province", "Street", "Apt/Suite", "Zip"];
+
+    var selectUSA = document.getElementById('usa').checked;
+    var selectIndia = document.getElementById('india').checked;
+    var selectSpain = document.getElementById('spain').checked;
+    var selectJapan = document.getElementById('japan').checked;
+    var selectGermany = document.getElementById('germany').checked;
+    var selectSKorea = document.getElementById('skorea').checked;
+    var selectNKorea = document.getElementById('nkorea').checked;
+    var selectBrazil = document.getElementById('brazil').checked;
+    var selectUK = document.getElementById('uk').checked;
+    var selectMexico = document.getElementById('mexico').checked;
+    var selectCanada = document.getElementById('canada').checked;
+
+    const res = []
+
+    if(selectUSA){
+      merge_array(res, usa);
     }
-  })();
+    if(selectIndia){
+      merge_array(res, india);
+    }
+    if(selectSpain){
+      merge_array(res, spain);
+    }
+    if(selectJapan){
+      merge_array(res, japan);
+    }
+    if(selectGermany){
+      merge_array(res, germany);
+    }
+    if(selectSKorea){
+      merge_array(res, skorea);
+    }
+    if(selectNKorea){
+      merge_array(res, nkorea);
+    }
+    if(selectBrazil){
+      merge_array(res, brazil);
+    }
+    if(selectUK){
+      merge_array(res, uk);
+    }
+    if(selectMexico){
+      merge_array(res, mexico);
+    }
+    if(selectCanada){
+      merge_array(res, canada);
+    }
+    
+    var set = new Set(res)
+
+    if(set.has("Street")){
+      street.disabled = false;
+    }else{
+      street.disabled = true;
+    }
+    if(set.has("Building/House No")){
+      bhn.disabled = false;
+    }else{
+      bhn.disabled = true;
+    }
+    if(set.has("Zip")){
+      zip.disabled = false;
+    }else{
+      zip.disabled = true;
+    }
+    if(set.has("Quarter")){
+      quarter.disabled = false;
+    }else{
+      quarter.disabled = true;
+    }
+    if(set.has("Town")){
+      town.disabled = false;
+    }else{
+      town.disabled = true;
+    }
+    if(set.has("Neighborhood")){
+      neighborhood.disabled = false;
+    }else{
+      neighborhood.disabled = true;
+    }
+    if(set.has("Block")){
+      block.disabled = false;
+    }else{
+      block.disabled = true;
+    }
+    if(set.has("Village")){
+      village.disabled = false;
+    }else{
+      village.disabled = true;
+    }
+    if(set.has("Apt/Suite")){
+      as.disabled = false;
+    }else{
+      as.disabled = true;
+    }
+    if(set.has("State")){
+      state.disabled = false;
+    }else{
+      state.disabled = true;
+    }
+    if(set.has("Sector")){
+      sector.disabled = false;
+    }else{
+      sector.disabled = true;
+    }
+    if(set.has("Province")){
+      province.disabled = false;
+    }else{
+      province.disabled = true;
+    }
+    if(set.has("POB")){
+      pob.disabled = false;
+    }else{
+      pob.disabled = true;
+    }
+    if(set.has("City")){
+      city.disabled = false;
+    }else{
+      city.disabled = true;
+    }
+    if(set.has("Subdivision")){
+      subdivision.disabled = false;
+    }else{
+      subdivision.disabled = true;
+    }
+    if(set.has("Locality")){
+      locality.disabled = false;
+    }else{
+      locality.disabled = true;
+    }
+    if(set.has("Quadrant")){
+      quadrant.disabled = false;
+    }else{
+      quadrant.disabled = true;
+    }
+    if(set.has("Prefecture")){
+      prefecture.disabled = false;
+    }else{
+      prefecture.disabled = true;
+    }
+  }
 
 </script>
 
