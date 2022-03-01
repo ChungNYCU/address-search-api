@@ -7,7 +7,7 @@ def getRandomValue(addr):
 
 
 def getRandomNumber(title, num):
-    print(title + str(random.randint(0, num)))
+    print(title + str(random.randint(0, 1000)))
 
 def getRandomEvenNumber():
     print(random.randrange(0, 1000, 2))
@@ -824,13 +824,13 @@ germanyCities =['Berlin',
 'Dessau',
 'Villingen-Schwenningen']
 
-for x in range(100):
+for x in range(200):
     #getRandomValue(germanyCities)
     # getRandomNumber("", 200)
      #getRandomNumber("Flat No. ",1000)
     # getCanadaUnit()
     #getRandomNumber("Postfach ",999)
     #getKoreaZip()
-    getRandomEvenNumber()
+    getRandomNumber("",99999)
 
 
