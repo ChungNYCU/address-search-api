@@ -18,13 +18,17 @@ def find_match_address(req_body, json_database):
             continue
 
         for key in req_body:
-            if req_body[key]:
-                try:
+            try:
+                if req_body[key] and address[key]:
                     if req_body[key].strip().lower() != address[key].strip().lower():
                         isValid = False
                         break
-                except:
+                elif req_body[key] and not address[key]:
+                    isValid = False
+                else:
                     continue
+            except:
+                continue
 
         if isValid:
             search_result.append(address)
