@@ -237,21 +237,18 @@
     selectSpain.addEventListener('click', function(){
       var city = document.getElementById('city');
       var town = document.getElementById('town');
-      var locality = document.getElementById('locality');
       var street = document.getElementById('street');
       var zip = document.getElementById('zip');
       var bhn = document.getElementById('bhn');
       if (this.checked){
         city.disabled = false;
         town.disabled = false;
-        locality.disabled = false;
         street.disabled = false;
         zip.disabled = false;
         bhn.disabled = false;
       }else{
         city.disabled = true;
         town.disabled = true;
-        locality.disabled = true;
         street.disabled = true;
         zip.disabled = true;
         bhn.disabled = true;
