@@ -11,12 +11,13 @@
     India: <input type="checkbox" id="india" name="india" class="form-control">
     Spain: <input type="checkbox" id="spain" name="spain" class="form-control">
     Japan: <input type="checkbox" id="japan" name="japan" class="form-control">
-    Germany: <input type="checkbox" id="germany" name="germany" class="form-control"><br>
-    North/South Korea: <input type="checkbox" id="nskorea" name="nskorea" class="form-control">
+    Germany: <input type="checkbox" id="germany" name="germany" class="form-control">
+    Canada: <input type="checkbox" id="canada" name="canada" class="form-control"><br>
+    South Korea: <input type="checkbox" id="skorea" name="nskorea" class="form-control">
+    North Korea: <input type="checkbox" id="nkorea" name="nskorea" class="form-control">
     Brazil: <input type="checkbox" id="brazil" name="brazil" class="form-control">
     UK: <input type="checkbox" id="uk" name="uk" class="form-control">
-    Mexico: <input type="checkbox" id="mexico" name="mexico" class="form-control">
-    Canada: <input type="checkbox" id="canada" name="canada" class="form-control"><br>
+    Mexico: <input type="checkbox" id="mexico" name="mexico" class="form-control"><br>
   </P>
 
   <h2>Provide a name:</h2>
@@ -55,7 +56,8 @@
     var selectSpain = document.getElementById('spain');
     var selectJapan = document.getElementById('japan');
     var selectGermany = document.getElementById('germany');
-    var selectNSkorea = document.getElementById('nskorea');
+    var selectSKorea = document.getElementById('skorea');
+    var selectNKorea = document.getElementById('nkorea');
     var selectBrazil = document.getElementById('brazil');
     var selectUK = document.getElementById('uk');
     var selectMexico = document.getElementById('mexico');
@@ -178,7 +180,7 @@
       }
     });
 
-    selectNSkorea.addEventListener('click', function(){
+    selectSKorea.addEventListener('click', function(){
       var province = document.getElementById('province');
       var city = document.getElementById('city');
       var subdivision = document.getElementById('subdivision');
@@ -192,6 +194,24 @@
         province.disabled = true;
         city.disabled = true;
         subdivision.disabled = true;
+        bhn.disabled = true;     
+      }
+    });
+
+    selectNKorea.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var street = document.getElementById('street');
+      var bhn = document.getElementById('bhn');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        street.disabled = false;
+        bhn.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        street.disabled = true;
         bhn.disabled = true;     
       }
     });
