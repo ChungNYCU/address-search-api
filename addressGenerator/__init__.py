@@ -35,8 +35,9 @@ def getRandomPostalCode():
     randstr3 = abc[random.randint(0, num)]
     randstr4 = abc[random.randint(0, num)]
     randstr5 = abc[random.randint(0, num)]
+    randstr6 = abc[random.randint(0, num)]
 
-    print(randstr+randstr1+randstr2+ " " +randstr3+randstr4+randstr5)
+    print(randstr+randstr1+randstr2+randstr6+ " " +randstr3+randstr4+randstr5)
 
 def getKoreaZip():
     print(str(random.randint(100, 999)) + "-" + str(random.randint(100, 999)))
@@ -831,6 +832,6 @@ for x in range(200):
     # getCanadaUnit()
     #getRandomNumber("Postfach ",999)
     #getKoreaZip()
-    getRandomNumber("",99999)
+    getRandomPostalCode();
 
 
