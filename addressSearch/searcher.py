@@ -20,9 +20,14 @@ def find_match_address(req_body, json_database):
         for key in req_body:
             try:
                 if req_body[key] and address[key]:
-                    if req_body[key].strip().lower() != address[key].strip().lower():
-                        isValid = False
-                        break
+                    if type(req_body[key]) == str:
+                        if req_body[key].strip().lower() != address[key].strip().lower():
+                            isValid = False
+                            break
+                    elif type(req_body[key]) == int:
+                        if req_body[key] != address[key]:
+                            isValid = False
+                            break
                 elif req_body[key] and not address[key]:
                     isValid = False
                 else:
