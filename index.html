@@ -1,87 +1,373 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<body>-->
-
-<!--<h2>Image processor</h2>-->
-
-<!--<form action="https://image-process.azurewebsites.net/api/processimage">-->
-<!--  <label for="img">Image URL:</label><br>-->
-<!--  <input type="text" id="fname" name="img" size="50" value="https://i.imgur.com/IMUhhEQ.jpg"><br>-->
-<!--  <label for="ops">Process operations:</label><br>-->
-<!--  <input type="text" id="lname" name="ops" size="50" value="Flip,0"><br><br>-->
-<!--  <input type="submit" value="Submit">-->
-<!--</form> -->
-
-<!--<p>Process operations sample: Flip,0 Resize,50 Grayscale Rotate,45</p>-->
-<!--<p>If you click the "Submit" button, the form-data will be sent to a page called "https://image-process.azurewebsites.net/api/processimage".</p>-->
-
-<!--</body>-->
-<!--</html>-->
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <body>
 
-<h2>Image processor</h2>
+<h2 align="center">Address Search</h2>
 
-<form action="http://127.0.0.1:5000/" method="post">
-  <label for="img">Image URL:</label><br>
-  <input type="text" id="img" name="img" size="50" value="https://i.imgur.com/IMUhhEQ.jpg"><br>
+<form action="https://address-search.azurewebsites.net/api/addresssearch" method="post">
+  <h2>Select a country(ies):</h2>
+  <P>
+    USA: <input type="checkbox" id="usa" name="usa" class="form-control">
+    India: <input type="checkbox" id="india" name="india" class="form-control">
+    Spain: <input type="checkbox" id="spain" name="spain" class="form-control">
+    Japan: <input type="checkbox" id="japan" name="japan" class="form-control">
+    Germany: <input type="checkbox" id="germany" name="germany" class="form-control">
+    Canada: <input type="checkbox" id="canada" name="canada" class="form-control"><br>
+    South Korea: <input type="checkbox" id="skorea" name="nskorea" class="form-control">
+    North Korea: <input type="checkbox" id="nkorea" name="nskorea" class="form-control">
+    Brazil: <input type="checkbox" id="brazil" name="brazil" class="form-control">
+    UK: <input type="checkbox" id="uk" name="uk" class="form-control">
+    Mexico: <input type="checkbox" id="mexico" name="mexico" class="form-control"><br>
+  </P>
 
-  Flip:   <input type="text" name="flip" id="flip"><br>
-  Rotate: <input type="text" name="rotate" id="rotate"><br>
-  Resize: <input type="text" name="resize" id="resize"><br>
-  Convert to grayscale: <input type="checkbox" id="grayscale" name="grayscale"><br>
-  Generate a thumbnail: <input type="checkbox" id="thumbnail" name="thumbnail"><br>
-  Rotate left: <input type="checkbox" id="rotatel" name="rotatel"><br>
-  Rotate right:   <input type="checkbox" id="rotater" name="rotater"><br>
+  <h2>Provide a name:</h2>
+  <p>
+    First Name: <input id="fname" name="fname" style=" width: 10%" type="text" placeholder="Skypioneer" autocomplete="off">
+    Last Name: <input id="lname" name="lname" style=" width: 10%" type="text" placeholder="Wang" autocomplete="off">
+  </p>
 
-  <button onclick="generate_query_str()">Go</button>
-  <input type="hidden" id="ops" name="ops" size="50" value="">
+  <h2>Provide a partial address(es)</h2>
+  <P>
+    State: <input id="state" name="state" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Province: <input id="province" name="province" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Prefecture: <input id="prefecture" name="prefecture" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    City: <input id="city" name="city" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Locality: <input id="locality" name="locality" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
+    Town: <input id="town" name="town" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Village: <input id="village" name="village" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Subdivision: <input id="subdivision" name="subdivision" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Sector: <input id="sector" name="sector" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Quadrant: <input id="quadrant" name="quadrant" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
+    Block: <input id="block" name="block" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Neighborhood: <input id="neighborhood" name="neighborhood" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Quarter: <input id="quarter" name="quarter" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Street: <input id="street" name="street" style=" width: 16%" type="text" autocomplete="off" disabled="true"><br>
+    Building/House No.: <input id="bhn" name="bhn" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Apt/Suite: <input id="as" name="as" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Zip: <input id="zip" name="zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    POB: <input id="pob" name="pob" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+  </P>
+  <button onclick="generate_seachCountries()" class="btn btn-info">Search</button>
+  <input type="hidden" id="seachCountries" name="searchCounties" value="">
 </form>
-
-<script>
-  function generate_query_str() {
-    var flip = document.getElementById('flip').value;
-    var rotate = document.getElementById('rotate').value;
-    var resize = document.getElementById('resize').value;
-    var grayscale = document.getElementById('grayscale').checked;
-    var thumbnail = document.getElementById('thumbnail').checked;
-    var rotatel = document.getElementById('rotatel').checked;
-    var rotater = document.getElementById('rotater').checked;
-    var q = ''
-    if(flip){
-      q += 'flip,' + flip + ' '
+<script type="text/javascript">
+  function generate_searchCounties(){
+    var usa = document.getElementById('usa').checked;
+    var india = document.getElementById('india').checked;
+    var spain = document.getElementById('spain').checked;
+    var japan = document.getElementById('japan').checked;
+    var germany = document.getElementById('germany').checked;
+    var skorea = document.getElementById('skorea').checked;
+    var nkorea = document.getElementById('nkorea').checked;
+    var brazil = document.getElementById('brazil').checked;
+    var uk = document.getElementById('uk').checked;
+    var mexico = document.getElementById('mexico').checked;
+    var canada = document.getElementById('canada').checked;
+    var seachCountries = ''
+    
+    if (usa){
+      seachCountries += 'usa' + ' '
     }
-    if(rotate){
-      q += 'rotate,' + rotate + ' '
+    if (india){
+      seachCountries += 'india' + ' '
     }
-    if(resize){
-      q += 'resize,' + resize + ' '
+    if (spain){
+      seachCountries += 'spain' + ' '
     }
-    if(grayscale==true){
-      q += 'grayscale, '
+    if (japan){
+      seachCountries += 'japan' + ' '
     }
-    if(thumbnail==true){
-      q += 'thumbnail, '
+    if (germany){
+      seachCountries += 'germany' + ' '
     }
-    if(rotatel==true){
-      q += 'rotatel, '
+    if (skorea){
+      seachCountries += 'skorea' + ' '
     }
-    if(rotater==true){
-      q += 'rotater, '
+    if (nkorea){
+      seachCountries += 'nkorea' + ' '
     }
-    document.getElementById('ops').value = q;
+    if (brazil){
+      seachCountries += 'brazil' + ' '
+    }
+    if (uk){
+      seachCountries += 'uk' + ' '
+    }
+    if (mexico){
+      seachCountries += 'mexico' + ' '
+    }
+    if (canada){
+      seachCountries += 'canada' + ' '
+    }
+    document.getElementById('seachCountries').value = seachCountries;
   }
 
-</script>
+  (function(){
+    var selectUSA = document.getElementById('usa');
+    var selectIndia = document.getElementById('india');
+    var selectSpain = document.getElementById('spain');
+    var selectJapan = document.getElementById('japan');
+    var selectGermany = document.getElementById('germany');
+    var selectSKorea = document.getElementById('skorea');
+    var selectNKorea = document.getElementById('nkorea');
+    var selectBrazil = document.getElementById('brazil');
+    var selectUK = document.getElementById('uk');
+    var selectMexico = document.getElementById('mexico');
+    var selectCanada = document.getElementById('canada');
 
-<p>Flip only accept 0 = vertically or 1 = horizontally, resize only accept 1~1000</p>
-<p>If you click the "Submit" button, the form-data will be sent to a page called "https://image-process.azurewebsites.net/api/processimage".</p>
+    selectUSA.addEventListener('click', function(){
+      var state = document.getElementById('state');
+      var city = document.getElementById('city');
+      var street = document.getElementById('street');
+      var bhn = document.getElementById('bhn');
+      var as = document.getElementById('as');
+      var zip = document.getElementById('zip');
+      var pob = document.getElementById('pob');
+      if (this.checked){
+        state.disabled = false;
+        city.disabled = false;
+        street.disabled = false;
+        bhn.disabled = false;
+        as.disabled = false;
+        zip.disabled = false;
+        pob.disabled = false; 
+      }else{
+        state.disabled = true;
+        city.disabled = true;
+        street.disabled = true;
+        bhn.disabled = true;
+        as.disabled = true;
+        zip.disabled = true;
+        pob.disabled = true; 
+      }
+    });
+
+    selectJapan.addEventListener('click', function(){
+      var prefecture = document.getElementById('prefecture');
+      var city = document.getElementById('city');
+      var town = document.getElementById('town');
+      var steet = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        prefecture.disabled = false;
+        city.disabled = false;
+        town.disabled = false;
+        steet.disabled = false;
+        zip.disabled = false;
+      }else{
+        prefecture.disabled = true;
+        city.disabled = true;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
+    selectBrazil.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var sector = document.getElementById('sector');
+      var block = document.getElementById('block');
+      var quadrant = document.getElementById('quadrant');
+      var neighborhood = document.getElementById('neighborhood');
+      var street = document.getElementById('street');
+      var bhn = document.getElementById('bhn');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        sector.disabled = false;
+        block.disabled = false;
+        quadrant.disabled = false;
+        neighborhood.disabled = false;
+        street.disabled = false;
+        bhn.disabled = false;
+        zip.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        sector.disabled = true;
+        block.disabled = true;
+        quadrant.disabled = true;
+        neighborhood.disabled = true;
+        street.disabled = true;
+        bhn.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
+    selectCanada.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var street = document.getElementById('street');
+      var as = document.getElementById('as');
+      if (this.checked){
+        province.disabled = false;
+        street.disabled = false;
+        as.disabled = false;
+      }else{
+        province.disabled = true;
+        street.disabled = true;
+        as.disabled = true;        
+      }
+    });
+
+    selectGermany.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      var pob = document.getElementById('pob');
+      if (this.checked){
+        city.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+        pob.disabled = false;
+      }else{
+        city.disabled = true;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+        pob.disabled = true;     
+      }
+    });
+
+    selectSKorea.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var subdivision = document.getElementById('subdivision');
+      var bhn = document.getElementById('bhn');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        subdivision.disabled = false;
+        bhn.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        subdivision.disabled = true;
+        bhn.disabled = true;     
+      }
+    });
+
+    selectNKorea.addEventListener('click', function(){
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var street = document.getElementById('street');
+      var bhn = document.getElementById('bhn');
+      if (this.checked){
+        province.disabled = false;
+        city.disabled = false;
+        street.disabled = false;
+        bhn.disabled = false;
+      }else{
+        province.disabled = true;
+        city.disabled = true;
+        street.disabled = true;
+        bhn.disabled = true;     
+      }
+    });
+
+    selectUK.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        city.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+      }else{
+        city.disabled = true;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
+
+    selectSpain.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      var bhn = document.getElementById('bhn');
+      if (this.checked){
+        city.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+        bhn.disabled = false;
+      }else{
+        city.disabled = true;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+        bhn.disabled = true;
+      }
+    });
+
+    selectMexico.addEventListener('click', function(){
+      var state = document.getElementById('state');
+      var province = document.getElementById('province');
+      var city = document.getElementById('city');
+      var locality = document.getElementById('locality');
+      var village = document.getElementById('village');
+      var neighborhood = document.getElementById('neighborhood');
+      var quarter = document.getElementById('quarter');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      var bhn = document.getElementById('bhn');
+      var as = document.getElementById('as');
+      if (this.checked){
+        state.disabled = false;
+        province.disabled = false;
+        city.disabled = false;
+        locality.disabled = false;
+        village.disabled = false;
+        neighborhood.disabled = false;
+        quarter.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+        bhn.disabled = false;
+        as.disabled = false;
+      }else{
+        state.disabled = true;
+        province.disabled = true;
+        city.disabled = true;
+        locality.disabled = true;
+        village.disabled = true;
+        neighborhood.disabled = true;
+        quarter.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+        bhn.disabled = true;
+        as.disabled = true;
+      }
+    });
+
+    selectIndia.addEventListener('click', function(){
+      var city = document.getElementById('city');
+      var locality = document.getElementById('locality');
+      var town = document.getElementById('town');
+      var street = document.getElementById('street');
+      var zip = document.getElementById('zip');
+      if (this.checked){
+        city.disabled = false;
+        locality.disabled = false;
+        town.disabled = false;
+        street.disabled = false;
+        zip.disabled = false;
+      }else{
+        city.disabled = true;
+        locality.disabled = false;
+        town.disabled = true;
+        street.disabled = true;
+        zip.disabled = true;
+      }
+    });
+  })();
+
+</script>
 
 </body>
 </html>
