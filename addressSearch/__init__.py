@@ -31,4 +31,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse("Cannot search address: " + str(e), status_code=400)
 
     
-    return func.HttpResponse(json.dumps(search_result), status_code=200)
+    return func.HttpResponse(json.dumps(search_result, skipkeys = True, allow_nan = True, indent = 6), status_code=200)
