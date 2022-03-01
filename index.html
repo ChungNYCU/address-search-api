@@ -51,55 +51,18 @@
   <input type="hidden" id="seachCountries" name="searchCounties" value="">
 </form>
 <script type="text/javascript">
-  function generate_searchCounties(){
-    var usa = document.getElementById('usa').checked;
-    var india = document.getElementById('india').checked;
-    var spain = document.getElementById('spain').checked;
-    var japan = document.getElementById('japan').checked;
-    var germany = document.getElementById('germany').checked;
-    var skorea = document.getElementById('skorea').checked;
-    var nkorea = document.getElementById('nkorea').checked;
-    var brazil = document.getElementById('brazil').checked;
-    var uk = document.getElementById('uk').checked;
-    var mexico = document.getElementById('mexico').checked;
-    var canada = document.getElementById('canada').checked;
-    var seachCountries = ''
-    
-    if (usa){
-      seachCountries += 'usa' + ' '
-    }
-    if (india){
-      seachCountries += 'india' + ' '
-    }
-    if (spain){
-      seachCountries += 'spain' + ' '
-    }
-    if (japan){
-      seachCountries += 'japan' + ' '
-    }
-    if (germany){
-      seachCountries += 'germany' + ' '
-    }
-    if (skorea){
-      seachCountries += 'skorea' + ' '
-    }
-    if (nkorea){
-      seachCountries += 'nkorea' + ' '
-    }
-    if (brazil){
-      seachCountries += 'brazil' + ' '
-    }
-    if (uk){
-      seachCountries += 'uk' + ' '
-    }
-    if (mexico){
-      seachCountries += 'mexico' + ' '
-    }
-    if (canada){
-      seachCountries += 'canada' + ' '
-    }
-    document.getElementById('seachCountries').value = seachCountries;
-  }
+  countries = []
+  use = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"]
+  india = ["Prefecture", "City", "Town", "Street", "Zip"]
+  spain = ["City", "Town", "Street", "Zip", "Building/House No"]
+  japan = ["Prefecture", "City", "Town", "Street", "Zip"]
+  germany = ["City", "Town", "Street", "Zip", "POB"]
+  skorea = ["Province", "City", "Subdivision", "Building/House No"]
+  nkorea = ["Province", "City", "Street", "Building/House No"]
+  brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip"]
+  uk = ["City", "Town", "Street", "Zip"]
+  mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "Building/House No", "Apt/Suite"]
+  canada = ["Province", "Street", "Apt/Suite"]
 
   (function(){
     var selectUSA = document.getElementById('usa');
@@ -114,257 +77,30 @@
     var selectMexico = document.getElementById('mexico');
     var selectCanada = document.getElementById('canada');
 
-    selectUSA.addEventListener('click', function(){
-      var state = document.getElementById('state');
-      var city = document.getElementById('city');
-      var street = document.getElementById('street');
-      var bhn = document.getElementById('bhn');
-      var as = document.getElementById('as');
-      var zip = document.getElementById('zip');
-      var pob = document.getElementById('pob');
-      if (this.checked){
-        state.disabled = false;
-        city.disabled = false;
-        street.disabled = false;
-        bhn.disabled = false;
-        as.disabled = false;
-        zip.disabled = false;
-        pob.disabled = false; 
-      }else{
-        state.disabled = true;
-        city.disabled = true;
-        street.disabled = true;
-        bhn.disabled = true;
-        as.disabled = true;
-        zip.disabled = true;
-        pob.disabled = true; 
-      }
-    });
+    function add_C(country){
+    countries.push(country)
+    };
 
-    selectJapan.addEventListener('click', function(){
-      var prefecture = document.getElementById('prefecture');
-      var city = document.getElementById('city');
-      var town = document.getElementById('town');
-      var steet = document.getElementById('street');
-      var zip = document.getElementById('zip');
-      if (this.checked){
-        prefecture.disabled = false;
-        city.disabled = false;
-        town.disabled = false;
-        steet.disabled = false;
-        zip.disabled = false;
-      }else{
-        prefecture.disabled = true;
-        city.disabled = true;
-        town.disabled = true;
-        street.disabled = true;
-        zip.disabled = true;
-      }
-    });
+    function remove_C(country){
+      for (let i = 0; i < countries.length; i++) {
+        if (countries[i] == country) {
+            const removedElements = countries.splice(i, 1);
+            break;
+        }
+      }  
+    }
 
-    selectBrazil.addEventListener('click', function(){
-      var province = document.getElementById('province');
-      var city = document.getElementById('city');
-      var sector = document.getElementById('sector');
-      var block = document.getElementById('block');
-      var quadrant = document.getElementById('quadrant');
-      var neighborhood = document.getElementById('neighborhood');
-      var street = document.getElementById('street');
-      var bhn = document.getElementById('bhn');
-      var zip = document.getElementById('zip');
-      if (this.checked){
-        province.disabled = false;
-        city.disabled = false;
-        sector.disabled = false;
-        block.disabled = false;
-        quadrant.disabled = false;
-        neighborhood.disabled = false;
-        street.disabled = false;
-        bhn.disabled = false;
-        zip.disabled = false;
-      }else{
-        province.disabled = true;
-        city.disabled = true;
-        sector.disabled = true;
-        block.disabled = true;
-        quadrant.disabled = true;
-        neighborhood.disabled = true;
-        street.disabled = true;
-        bhn.disabled = true;
-        zip.disabled = true;
+    function set_countries(countries){
+      res = []
+      for (let i = 0; i < countries.length; i++){
+        res = [...new Set([...res, ...countries[i]])];
       }
-    });
+      return res;
+    };
 
-    selectCanada.addEventListener('click', function(){
-      var province = document.getElementById('province');
-      var street = document.getElementById('street');
-      var as = document.getElementById('as');
-      if (this.checked){
-        province.disabled = false;
-        street.disabled = false;
-        as.disabled = false;
-      }else{
-        province.disabled = true;
-        street.disabled = true;
-        as.disabled = true;        
-      }
-    });
-
-    selectGermany.addEventListener('click', function(){
-      var city = document.getElementById('city');
-      var town = document.getElementById('town');
-      var street = document.getElementById('street');
-      var zip = document.getElementById('zip');
-      var pob = document.getElementById('pob');
-      if (this.checked){
-        city.disabled = false;
-        town.disabled = false;
-        street.disabled = false;
-        zip.disabled = false;
-        pob.disabled = false;
-      }else{
-        city.disabled = true;
-        town.disabled = true;
-        street.disabled = true;
-        zip.disabled = true;
-        pob.disabled = true;     
-      }
-    });
-
-    selectSKorea.addEventListener('click', function(){
-      var province = document.getElementById('province');
-      var city = document.getElementById('city');
-      var subdivision = document.getElementById('subdivision');
-      var bhn = document.getElementById('bhn');
-      if (this.checked){
-        province.disabled = false;
-        city.disabled = false;
-        subdivision.disabled = false;
-        bhn.disabled = false;
-      }else{
-        province.disabled = true;
-        city.disabled = true;
-        subdivision.disabled = true;
-        bhn.disabled = true;     
-      }
-    });
-
-    selectNKorea.addEventListener('click', function(){
-      var province = document.getElementById('province');
-      var city = document.getElementById('city');
-      var street = document.getElementById('street');
-      var bhn = document.getElementById('bhn');
-      if (this.checked){
-        province.disabled = false;
-        city.disabled = false;
-        street.disabled = false;
-        bhn.disabled = false;
-      }else{
-        province.disabled = true;
-        city.disabled = true;
-        street.disabled = true;
-        bhn.disabled = true;     
-      }
-    });
-
-    selectUK.addEventListener('click', function(){
-      var city = document.getElementById('city');
-      var town = document.getElementById('town');
-      var street = document.getElementById('street');
-      var zip = document.getElementById('zip');
-      if (this.checked){
-        city.disabled = false;
-        town.disabled = false;
-        street.disabled = false;
-        zip.disabled = false;
-      }else{
-        city.disabled = true;
-        town.disabled = true;
-        street.disabled = true;
-        zip.disabled = true;
-      }
-    });
-
-    selectSpain.addEventListener('click', function(){
-      var city = document.getElementById('city');
-      var town = document.getElementById('town');
-      var street = document.getElementById('street');
-      var zip = document.getElementById('zip');
-      var bhn = document.getElementById('bhn');
-      if (this.checked){
-        city.disabled = false;
-        town.disabled = false;
-        street.disabled = false;
-        zip.disabled = false;
-        bhn.disabled = false;
-      }else{
-        city.disabled = true;
-        town.disabled = true;
-        street.disabled = true;
-        zip.disabled = true;
-        bhn.disabled = true;
-      }
-    });
-
-    selectMexico.addEventListener('click', function(){
-      var state = document.getElementById('state');
-      var province = document.getElementById('province');
-      var city = document.getElementById('city');
-      var locality = document.getElementById('locality');
-      var village = document.getElementById('village');
-      var neighborhood = document.getElementById('neighborhood');
-      var quarter = document.getElementById('quarter');
-      var street = document.getElementById('street');
-      var zip = document.getElementById('zip');
-      var bhn = document.getElementById('bhn');
-      var as = document.getElementById('as');
-      if (this.checked){
-        state.disabled = false;
-        province.disabled = false;
-        city.disabled = false;
-        locality.disabled = false;
-        village.disabled = false;
-        neighborhood.disabled = false;
-        quarter.disabled = false;
-        street.disabled = false;
-        zip.disabled = false;
-        bhn.disabled = false;
-        as.disabled = false;
-      }else{
-        state.disabled = true;
-        province.disabled = true;
-        city.disabled = true;
-        locality.disabled = true;
-        village.disabled = true;
-        neighborhood.disabled = true;
-        quarter.disabled = true;
-        street.disabled = true;
-        zip.disabled = true;
-        bhn.disabled = true;
-        as.disabled = true;
-      }
-    });
-
-    selectIndia.addEventListener('click', function(){
-      var city = document.getElementById('city');
-      var locality = document.getElementById('locality');
-      var town = document.getElementById('town');
-      var street = document.getElementById('street');
-      var zip = document.getElementById('zip');
-      if (this.checked){
-        city.disabled = false;
-        locality.disabled = false;
-        town.disabled = false;
-        street.disabled = false;
-        zip.disabled = false;
-      }else{
-        city.disabled = true;
-        locality.disabled = false;
-        town.disabled = true;
-        street.disabled = true;
-        zip.disabled = true;
-      }
-    });
+    if (document.getElementById('usa').checked){
+      
+    }
   })();
 
 </script>
