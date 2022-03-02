@@ -126,94 +126,94 @@
     var set = new Set(res)
 
     if(set.has("Street")){
-      street.disabled = false;
+      Street.disabled = false;
     }else{
-      street.disabled = true;
+      Street.disabled = true;
     }
     if(set.has("Building/House No")){
-      bhn.disabled = false;
+      BuildingHouseNo.disabled = false;
     }else{
-      bhn.disabled = true;
+      BuildingHouseNo.disabled = true;
     }
     if(set.has("Zip")){
-      zip.disabled = false;
+      Zip.disabled = false;
     }else{
-      zip.disabled = true;
+      Zip.disabled = true;
     }
     if(set.has("Quarter")){
-      quarter.disabled = false;
+      Quarter.disabled = false;
     }else{
-      quarter.disabled = true;
+      Quarter.disabled = true;
     }
     if(set.has("Town")){
-      town.disabled = false;
+      Town.disabled = false;
     }else{
-      town.disabled = true;
+      Town.disabled = true;
     }
     if(set.has("Neighborhood")){
-      neighborhood.disabled = false;
+      Neighborhood.disabled = false;
     }else{
-      neighborhood.disabled = true;
+      Neighborhood.disabled = true;
     }
     if(set.has("Block")){
-      block.disabled = false;
+      Block.disabled = false;
     }else{
-      block.disabled = true;
+      Block.disabled = true;
     }
     if(set.has("Village")){
-      village.disabled = false;
+      Village.disabled = false;
     }else{
-      village.disabled = true;
+      Village.disabled = true;
     }
     if(set.has("Apt/Suite")){
-      as.disabled = false;
+      AptSuite.disabled = false;
     }else{
-      as.disabled = true;
+      AptSuite.disabled = true;
     }
     if(set.has("State")){
-      state.disabled = false;
+      State.disabled = false;
     }else{
-      state.disabled = true;
+      State.disabled = true;
     }
     if(set.has("Sector")){
-      sector.disabled = false;
+      Sector.disabled = false;
     }else{
-      sector.disabled = true;
+      Sector.disabled = true;
     }
     if(set.has("Province")){
-      province.disabled = false;
+      Province.disabled = false;
     }else{
-      province.disabled = true;
+      Province.disabled = true;
     }
     if(set.has("POB")){
-      pob.disabled = false;
+      POB.disabled = false;
     }else{
-      pob.disabled = true;
+      POB.disabled = true;
     }
     if(set.has("City")){
-      city.disabled = false;
+      City.disabled = false;
     }else{
-      city.disabled = true;
+      City.disabled = true;
     }
     if(set.has("Subdivision")){
-      subdivision.disabled = false;
+      Subdivision.disabled = false;
     }else{
-      subdivision.disabled = true;
+      Subdivision.disabled = true;
     }
     if(set.has("Locality")){
-      locality.disabled = false;
+      Locality.disabled = false;
     }else{
-      locality.disabled = true;
+      Locality.disabled = true;
     }
     if(set.has("Quadrant")){
-      quadrant.disabled = false;
+      Quadrant.disabled = false;
     }else{
-      quadrant.disabled = true;
+      Quadrant.disabled = true;
     }
     if(set.has("Prefecture")){
-      prefecture.disabled = false;
+      Prefecture.disabled = false;
     }else{
-      prefecture.disabled = true;
+      Prefecture.disabled = true;
     }
   }
 
@@ -258,7 +258,7 @@
   if(selectSpain) res.append("spain")
   if(selectJapan) res.append("japan")
   if(selectGermany) res.append("germany")
-  if(selectSKoreay) res.append("skorea")
+  if(selectSKorea) res.append("skorea")
   if(selectNKorea) res.append("nkorea")
   if(selectBrazil) res.append("brazil")
   if(selectUK) res.append("uk")
@@ -277,6 +277,10 @@
 
 
   const J_result = JSON.stringify(jsonTest)
+
+  function submitForm(){
+
+  }
 
 
 </script>
