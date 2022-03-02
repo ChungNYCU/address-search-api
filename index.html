@@ -44,8 +44,8 @@
     Neighborhood: <input id="Neighborhood" name="Neighborhood" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Quarter: <input id="Quarter" name="Quarter" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Street: <input id="Street" name="Street" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
-    Building/House No: <input id="BuildingHouseNo" name="BuildingHouseNo" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Apt/Suite: <input id="AptSuite" name="AptSuite" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Building/House No: <input id="Building/House No" name="Building/House No" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Apt/Suite: <input id="Apt/Suite" name="Apt/Suite" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Zip: <input id="Zip" name="Zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     POB: <input id="POB" name="POB" style=" width: 10%" type="text" autocomplete="off" disabled="true">
   </P>
@@ -65,17 +65,17 @@
   }
   function set_text_input() {
 
-    const usa = ["State", "City", "Street", "BuildingHouseNo", "AptSuite", "Zip", "POB"];
+    const usa = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"];
     const india = ["City", "Town", "Locality", "Street", "Zip"];
-    const spain = ["City", "Town", "Street", "Zip", "BuildingHouseNo"];
+    const spain = ["City", "Town", "Street", "Zip", "Building/House No"];
     const japan = ["Prefecture", "City", "Town", "Street", "Zip"];
     const germany = ["City", "Town", "Street", "Zip", "POB"];
-    const southkorea = ["Province", "City", "Subdivision", "BuildingHouseNo"];
-    const northkorea = ["Province", "City", "Street", "BuildingHouseNo"];
-    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "BuildingHouseNo", "Zip", "POB"];
+    const southkorea = ["Province", "City", "Subdivision", "Building/House No"];
+    const northkorea = ["Province", "City", "Street", "Building/House No"];
+    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip", "POB"];
     const uk = ["City", "Town", "Street", "Zip"];
-    const mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "BuildingHouseNo", "AptSuite"];
-    const canada = ["Province", "City", "Street", "AptSuite", "Zip"];
+    const mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "Building/House No", "Apt/Suite"];
+    const canada = ["Province", "City", "Street", "Apt/Suite", "Zip"];
 
     var selectUSA = document.getElementById('usa').checked;
     var selectIndia = document.getElementById('india').checked;
@@ -88,6 +88,27 @@
     var selectUK = document.getElementById('uk').checked;
     var selectMexico = document.getElementById('mexico').checked;
     var selectCanada = document.getElementById('canada').checked;
+
+    var firstName = document.getElementById("First Name")
+    var LastName = document.getElementById("Last Name")
+    var Street = document.getElementById("Street")
+    var BuildingHouseNo = document.getElementById("Building/House No")
+    var Zip = document.getElementById("Zip")
+    var Quarter = document.getElementById("Quarter")
+    var Town = document.getElementById("Town")
+    var Neighborhood = document.getElementById("Neighborhood")
+    var Block = document.getElementById("Block")
+    var Village = document.getElementById("Village")
+    var AptSuite = document.getElementById("Apt/Suite")
+    var State = document.getElementById("State")
+    var Sector = document.getElementById("Sector")
+    var Province = document.getElementById("Province")
+    var POB = document.getElementById("POB")
+    var City = document.getElementById("City")
+    var Subdivision = document.getElementById("Subdivision")
+    var Locality = document.getElementById("Locality")
+    var Quadrant = document.getElementById("Quadrant")
+    var Prefecture = document.getElementById("Prefecture")
 
     const res = []
 
@@ -132,7 +153,7 @@
     }else{
       Street.disabled = true;
     }
-    if(set.has("BuildingHouseNo")){
+    if(set.has("Building/House No")){
       BuildingHouseNo.disabled = false;
     }else{
       BuildingHouseNo.disabled = true;
@@ -167,7 +188,7 @@
     }else{
       Village.disabled = true;
     }
-    if(set.has("AptSuite")){
+    if(set.has("Apt/Suite")){
       AptSuite.disabled = false;
     }else{
       AptSuite.disabled = true;
@@ -220,19 +241,20 @@
   }
 
 
+
   function submitForm(){
 
   var firstName = document.getElementById("First Name").value
   var LastName = document.getElementById("Last Name").value
   var Street = document.getElementById("Street").value
-  var BuildingHouseNo = document.getElementById("BuildingHouseNo").value
+  var BuildingHouseNo = document.getElementById("Building/House No").value
   var Zip = document.getElementById("Zip").value
   var Quarter = document.getElementById("Quarter").value
   var Town = document.getElementById("Town").value
   var Neighborhood = document.getElementById("Neighborhood").value
   var Block = document.getElementById("Block").value
   var Village = document.getElementById("Village").value
-  var AptSuite = document.getElementById("AptSuite").value
+  var AptSuite = document.getElementById("Apt/Suite").value
   var State = document.getElementById("State").value
   var Sector = document.getElementById("Sector").value
   var Province = document.getElementById("Province").value
@@ -282,8 +304,8 @@
 
 
   const jsonTest = {"searchCountries" : searchCountries, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
-  "BuildingHouseNo" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
-  "Village" : Village, "AptSuite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
+  "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
+  "Village" : Village, "Apt/Suite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
   "City" : City, "Subdivision" : Subdivision, "Locality" : Locality, "Quadrant" : Quadrant, "Prefecture" : Prefecture}
 
 
@@ -310,6 +332,8 @@
      .catch(function(error){
         console.error(error);
      })
+
+
   })
 
 
