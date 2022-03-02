@@ -4,73 +4,78 @@
 
 <h2 align="center">Address Search</h2>
 
-<form action="https://address-search.azurewebsites.net/api/addresssearch" method="post">
+<P>
+   <input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()"><label for="usa">USA</label>
+   <input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()"><label for="usa">India</label>
+   <input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()"><label for="usa">Spain</label>
+   <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()"><label for="usa">Japan</label>
+   <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()"><label for="usa">Germany</label>
+   <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><label for="usa">Canada</label><br>
+   <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">South Korea</label>
+   <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">North Korea</label>
+   <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()"><label for="usa">Brazil</label>
+   <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()"><label for="usa">UK</label>
+   <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><label for="usa">Mexico</label><br>
+ </P>
+
+<form id="myForm">
   <h2>Select a country(ies):</h2>
-  <P>
-    USA: <input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()">
-    India: <input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()">
-    Spain: <input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()">
-    Japan: <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()">
-    Germany: <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()">
-    Canada: <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><br>
-    South Korea: <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()">
-    North Korea: <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()">
-    Brazil: <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()">
-    UK: <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()">
-    Mexico: <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><br>
-  </P>
+
 
   <h2>Provide a name:</h2>
   <p>
-    First Name: <input id="fname" name="fname" style=" width: 10%" type="text" placeholder="" autocomplete="off">
-    Last Name: <input id="lname" name="lname" style=" width: 10%" type="text" placeholder="" autocomplete="off">
+    First Name: <input id="First Name" name="First Name" style=" width: 10%" type="text" placeholder="" autocomplete="off">
+    Last Name: <input id="Last Name" name="Last Name" style=" width: 10%" type="text" placeholder="" autocomplete="off">
   </p>
 
   <h2>Provide a partial address(es)</h2>
   <P>
-    State: <input id="state" name="state" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Province: <input id="province" name="province" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Prefecture: <input id="prefecture" name="prefecture" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    City: <input id="city" name="city" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Locality: <input id="locality" name="locality" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
-    Town: <input id="town" name="town" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Village: <input id="village" name="village" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Subdivision: <input id="subdivision" name="subdivision" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Sector: <input id="sector" name="sector" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Quadrant: <input id="quadrant" name="quadrant" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
-    Block: <input id="block" name="block" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Neighborhood: <input id="neighborhood" name="neighborhood" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Quarter: <input id="quarter" name="quarter" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Street: <input id="street" name="street" style=" width: 16%" type="text" autocomplete="off" disabled="true"><br>
-    Building/House No.: <input id="bhn" name="bhn" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Apt/Suite: <input id="as" name="as" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Zip: <input id="zip" name="zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    POB: <input id="pob" name="pob" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    State: <input id="State" name="State" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Province: <input id="Province" name="Province" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Prefecture: <input id="Prefecture" name="Prefecture" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    City: <input id="City" name="City" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Locality: <input id="Locality" name="Locality" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
+    Town: <input id="Town" name="Town" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Village: <input id="Village" name="Village" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Subdivision: <input id="Subdivision" name="Subdivision" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Sector: <input id="Sector" name="Sector" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Quadrant: <input id="Quadrant" name="Quadrant" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
+    Block: <input id="Block" name="Block" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Neighborhood: <input id="Neighborhood" name="Neighborhood" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Quarter: <input id="Quarter" name="Quarter" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Street: <input id="Street" name="Street" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
+    Building/House No: <input id="Building/House No" name="Building/House No" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Apt/Suite: <input id="Apt/Suite" name="Apt/Suite" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Zip: <input id="Zip" name="Zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    POB: <input id="POB" name="POB" style=" width: 10%" type="text" autocomplete="off" disabled="true">
   </P>
-  <button onclick="generate_seachCountries()" class="btn btn-info">Search</button>
-  <input type="hidden" id="seachCountries" name="searchCounties" value="">
+  <button onclick="submitForm()" class="btn btn-info">Search</button>
+  <input type="hidden" id="searchCountries" name="searchCountries" value="">
 </form>
 
+<div class="results">
+  <p class="result-json-output"></p>
+</div>
 
-<script>
+<script type="text/javascript">
   function merge_array(res, country){
     for (const element of country) {
         res.push(element);
     }
   }
   function set_text_input() {
-    
+
     const usa = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"];
-    const india = ["Prefecture", "City", "Town", "Street", "Zip"];
+    const india = ["City", "Town", "Locality", "Street", "Zip"];
     const spain = ["City", "Town", "Street", "Zip", "Building/House No"];
     const japan = ["Prefecture", "City", "Town", "Street", "Zip"];
     const germany = ["City", "Town", "Street", "Zip", "POB"];
     const skorea = ["Province", "City", "Subdivision", "Building/House No"];
     const nkorea = ["Province", "City", "Street", "Building/House No"];
-    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip"];
+    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip", "POB"];
     const uk = ["City", "Town", "Street", "Zip"];
     const mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "Building/House No", "Apt/Suite"];
-    const canada = ["Province", "Street", "Apt/Suite", "Zip"];
+    const canada = ["Province", "City", "Street", "Apt/Suite", "Zip"];
 
     var selectUSA = document.getElementById('usa').checked;
     var selectIndia = document.getElementById('india').checked;
@@ -119,100 +124,252 @@
     if(selectCanada){
       merge_array(res, canada);
     }
-    
+
     var set = new Set(res)
 
     if(set.has("Street")){
-      street.disabled = false;
+      Street.disabled = false;
     }else{
-      street.disabled = true;
+      Street.disabled = true;
     }
     if(set.has("Building/House No")){
-      bhn.disabled = false;
+      BuildingHouseNo.disabled = false;
     }else{
-      bhn.disabled = true;
+      BuildingHouseNo.disabled = true;
     }
     if(set.has("Zip")){
-      zip.disabled = false;
+      Zip.disabled = false;
     }else{
-      zip.disabled = true;
+      Zip.disabled = true;
     }
     if(set.has("Quarter")){
-      quarter.disabled = false;
+      Quarter.disabled = false;
     }else{
-      quarter.disabled = true;
+      Quarter.disabled = true;
     }
     if(set.has("Town")){
-      town.disabled = false;
+      Town.disabled = false;
     }else{
-      town.disabled = true;
+      Town.disabled = true;
     }
     if(set.has("Neighborhood")){
-      neighborhood.disabled = false;
+      Neighborhood.disabled = false;
     }else{
-      neighborhood.disabled = true;
+      Neighborhood.disabled = true;
     }
     if(set.has("Block")){
-      block.disabled = false;
+      Block.disabled = false;
     }else{
-      block.disabled = true;
+      Block.disabled = true;
     }
     if(set.has("Village")){
-      village.disabled = false;
+      Village.disabled = false;
     }else{
-      village.disabled = true;
+      Village.disabled = true;
     }
     if(set.has("Apt/Suite")){
-      as.disabled = false;
+      AptSuite.disabled = false;
     }else{
-      as.disabled = true;
+      AptSuite.disabled = true;
     }
     if(set.has("State")){
-      state.disabled = false;
+      State.disabled = false;
     }else{
-      state.disabled = true;
+      State.disabled = true;
     }
     if(set.has("Sector")){
-      sector.disabled = false;
+      Sector.disabled = false;
     }else{
-      sector.disabled = true;
+      Sector.disabled = true;
     }
     if(set.has("Province")){
-      province.disabled = false;
+      Province.disabled = false;
     }else{
-      province.disabled = true;
+      Province.disabled = true;
     }
     if(set.has("POB")){
-      pob.disabled = false;
+      POB.disabled = false;
     }else{
-      pob.disabled = true;
+      POB.disabled = true;
     }
     if(set.has("City")){
-      city.disabled = false;
+      City.disabled = false;
     }else{
-      city.disabled = true;
+      City.disabled = true;
     }
     if(set.has("Subdivision")){
-      subdivision.disabled = false;
+      Subdivision.disabled = false;
     }else{
-      subdivision.disabled = true;
+      Subdivision.disabled = true;
     }
     if(set.has("Locality")){
-      locality.disabled = false;
+      Locality.disabled = false;
     }else{
-      locality.disabled = true;
+      Locality.disabled = true;
     }
     if(set.has("Quadrant")){
-      quadrant.disabled = false;
+      Quadrant.disabled = false;
     }else{
-      quadrant.disabled = true;
+      Quadrant.disabled = true;
     }
     if(set.has("Prefecture")){
-      prefecture.disabled = false;
+      Prefecture.disabled = false;
     }else{
-      prefecture.disabled = true;
+      Prefecture.disabled = true;
     }
   }
+
+  var firstName = document.getElementById("First Name")
+  var LastName = document.getElementById("Last Name")
+  var Street = document.getElementById("Street")
+  var BuildingHouseNo = document.getElementById("Building/House No")
+  var Zip = document.getElementById("Zip")
+  var Quarter = document.getElementById("Quarter")
+  var Town = document.getElementById("Town")
+  var Neighborhood = document.getElementById("Neighborhood")
+  var Block = document.getElementById("Block")
+  var Village = document.getElementById("Village")
+  var AptSuite = document.getElementById("Apt/Suite")
+  var State = document.getElementById("State")
+  var Sector = document.getElementById("Sector")
+  var Province = document.getElementById("Province")
+  var POB = document.getElementById("POB")
+  var City = document.getElementById("City")
+  var Subdivision = document.getElementById("Subdivision")
+  var Locality = document.getElementById("Locality")
+  var Quadrant = document.getElementById("Quadrant")
+  var Prefecture = document.getElementById("Prefecture")
+
+  var selectUSA = document.getElementById('usa').checked;
+  var selectIndia = document.getElementById('india').checked;
+  var selectSpain = document.getElementById('spain').checked;
+  var selectJapan = document.getElementById('japan').checked;
+  var selectGermany = document.getElementById('germany').checked;
+  var selectSKorea = document.getElementById('skorea').checked;
+  var selectNKorea = document.getElementById('nkorea').checked;
+  var selectBrazil = document.getElementById('brazil').checked;
+  var selectUK = document.getElementById('uk').checked;
+  var selectMexico = document.getElementById('mexico').checked;
+  var selectCanada = document.getElementById('canada').checked;
+
+  const res = []
+  var searchCountries = ""
+
+  if(selectUSA) res.append("usa")
+  if(selectIndia) res.append("india")
+  if(selectSpain) res.append("spain")
+  if(selectJapan) res.append("japan")
+  if(selectGermany) res.append("germany")
+  if(selectSKorea) res.append("skorea")
+  if(selectNKorea) res.append("nkorea")
+  if(selectBrazil) res.append("brazil")
+  if(selectUK) res.append("uk")
+  if(selectMexico) res.append("mexico")
+  if(selectCanada) res.append("canada")
+
+
+  for (let i = 0; i < res.length; i++){
+    searchCountries += res[i] + " ";
+  }
+
+
+
+  function submitForm(){
+
+  var firstName = document.getElementById("First Name").value
+  var LastName = document.getElementById("Last Name").value
+  var Street = document.getElementById("Street").value
+  var BuildingHouseNo = document.getElementById("Building/House No").value
+  var Zip = document.getElementById("Zip").value
+  var Quarter = document.getElementById("Quarter").value
+  var Town = document.getElementById("Town").value
+  var Neighborhood = document.getElementById("Neighborhood").value
+  var Block = document.getElementById("Block").value
+  var Village = document.getElementById("Village").value
+  var AptSuite = document.getElementById("Apt/Suite").value
+  var State = document.getElementById("State").value
+  var Sector = document.getElementById("Sector").value
+  var Province = document.getElementById("Province").value
+  var POB = document.getElementById("POB").value
+  var City = document.getElementById("City").value
+  var Subdivision = document.getElementById("Subdivision").value
+  var Locality = document.getElementById("Locality").value
+  var Quadrant = document.getElementById("Quadrant").value
+  var Prefecture = document.getElementById("Prefecture").value
+
+  var selectUSA = document.getElementById('usa').checked;
+  var selectIndia = document.getElementById('india').checked;
+  var selectSpain = document.getElementById('spain').checked;
+  var selectJapan = document.getElementById('japan').checked;
+  var selectGermany = document.getElementById('germany').checked;
+  var selectSKorea = document.getElementById('skorea').checked;
+  var selectNKorea = document.getElementById('nkorea').checked;
+  var selectBrazil = document.getElementById('brazil').checked;
+  var selectUK = document.getElementById('uk').checked;
+  var selectMexico = document.getElementById('mexico').checked;
+  var selectCanada = document.getElementById('canada').checked;
+
+  var res = []
+  var searchCountries = ""
+
+  if(selectUSA) res.push("usa")
+  if(selectIndia) res.push("india")
+  if(selectSpain) res.push("spain")
+  if(selectJapan) res.push("japan")
+  if(selectGermany) res.push("germany")
+  if(selectSKorea) res.push("skorea")
+  if(selectNKorea) res.push("nkorea")
+  if(selectBrazil) res.push("brazil")
+  if(selectUK) res.push("uk")
+  if(selectMexico) res.push("mexico")
+  if(selectCanada) res.push("canada")
+
+
+  for (let i = 0; i < res.length; i++){
+    if (i == res.length - 1){
+      searchCountries += res[i];
+    }
+    else searchCountries += res[i] + " ";
+  }
+
+  document.getElementById('searchCountries').value = searchCountries;
+
+
+  const jsonTest = {"searchCountries" : searchCountries, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
+  "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
+  "Village" : Village, "Apt/Suite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
+  "City" : City, "Subdivision" : Subdivision, "Locality" : Locality, "Quadrant" : Quadrant, "Prefecture" : Prefecture}
+
+
+  const myJSON =  JSON.stringify(jsonTest);
+
+  const myForm = document.getElementById("myForm");
+
+  myForm.addEventListener("submit",function(e){
+     e.preventDefault();
+
+     const formData = new FormData(this);
+
+     fetch("https://address-search.azurewebsites.net/api/addresssearch",{
+        method:"POST",
+        body:myJSON,
+        mode: 'no-cors'
+     })
+     .then(function(response){
+        return response.text();
+     })
+     .then(function (text){
+        console.log(text);
+     })
+     .catch(function(error){
+        console.error(error);
+     })
+
+
+  })
+
+
+}
 
 </script>
 
