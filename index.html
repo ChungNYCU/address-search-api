@@ -11,8 +11,8 @@
    <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()"><label for="usa">Japan</label>
    <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()"><label for="usa">Germany</label>
    <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><label for="usa">Canada</label><br>
-   <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">South Korea</label>
-   <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">North Korea</label>
+   <input type="checkbox" id="southkorea" name="southkorea" class="form-control" onclick="set_text_input()"><label for="usa">South Korea</label>
+   <input type="checkbox" id="northkorea" name="northkorea" class="form-control" onclick="set_text_input()"><label for="usa">North Korea</label>
    <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()"><label for="usa">Brazil</label>
    <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()"><label for="usa">UK</label>
    <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><label for="usa">Mexico</label><br>
@@ -44,8 +44,8 @@
     Neighborhood: <input id="Neighborhood" name="Neighborhood" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Quarter: <input id="Quarter" name="Quarter" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Street: <input id="Street" name="Street" style=" width: 10%" type="text" autocomplete="off" disabled="true"><br>
-    Building/House No: <input id="Building/House No" name="Building/House No" style=" width: 10%" type="text" autocomplete="off" disabled="true">
-    Apt/Suite: <input id="Apt/Suite" name="Apt/Suite" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Building/House No: <input id="BuildingHouseNo" name="BuildingHouseNo" style=" width: 10%" type="text" autocomplete="off" disabled="true">
+    Apt/Suite: <input id="AptSuite" name="AptSuite" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     Zip: <input id="Zip" name="Zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     POB: <input id="POB" name="POB" style=" width: 10%" type="text" autocomplete="off" disabled="true">
   </P>
@@ -65,25 +65,25 @@
   }
   function set_text_input() {
 
-    const usa = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"];
+    const usa = ["State", "City", "Street", "BuildingHouseNo", "AptSuite", "Zip", "POB"];
     const india = ["City", "Town", "Locality", "Street", "Zip"];
-    const spain = ["City", "Town", "Street", "Zip", "Building/House No"];
+    const spain = ["City", "Town", "Street", "Zip", "BuildingHouseNo"];
     const japan = ["Prefecture", "City", "Town", "Street", "Zip"];
     const germany = ["City", "Town", "Street", "Zip", "POB"];
-    const skorea = ["Province", "City", "Subdivision", "Building/House No"];
-    const nkorea = ["Province", "City", "Street", "Building/House No"];
-    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "Building/House No", "Zip", "POB"];
+    const southkorea = ["Province", "City", "Subdivision", "BuildingHouseNo"];
+    const northkorea = ["Province", "City", "Street", "BuildingHouseNo"];
+    const brazil = ["Province", "City", "Sector", "Block", "Quadrant", "Neighborhood", "Street", "BuildingHouseNo", "Zip", "POB"];
     const uk = ["City", "Town", "Street", "Zip"];
-    const mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "Building/House No", "Apt/Suite"];
-    const canada = ["Province", "City", "Street", "Apt/Suite", "Zip"];
+    const mexico = ["State", "Province", "City", "Locality", "Village", "Neighborhood", "Quarter", "Street", "Zip", "BuildingHouseNo", "AptSuite"];
+    const canada = ["Province", "City", "Street", "AptSuite", "Zip"];
 
     var selectUSA = document.getElementById('usa').checked;
     var selectIndia = document.getElementById('india').checked;
     var selectSpain = document.getElementById('spain').checked;
     var selectJapan = document.getElementById('japan').checked;
     var selectGermany = document.getElementById('germany').checked;
-    var selectSKorea = document.getElementById('skorea').checked;
-    var selectNKorea = document.getElementById('nkorea').checked;
+    var selectSKorea = document.getElementById('southkorea').checked;
+    var selectNKorea = document.getElementById('northkorea').checked;
     var selectBrazil = document.getElementById('brazil').checked;
     var selectUK = document.getElementById('uk').checked;
     var selectMexico = document.getElementById('mexico').checked;
@@ -107,10 +107,10 @@
       merge_array(res, germany);
     }
     if(selectSKorea){
-      merge_array(res, skorea);
+      merge_array(res, southkorea);
     }
     if(selectNKorea){
-      merge_array(res, nkorea);
+      merge_array(res, northkorea);
     }
     if(selectBrazil){
       merge_array(res, brazil);
@@ -132,7 +132,7 @@
     }else{
       Street.disabled = true;
     }
-    if(set.has("Building/House No")){
+    if(set.has("BuildingHouseNo")){
       BuildingHouseNo.disabled = false;
     }else{
       BuildingHouseNo.disabled = true;
@@ -167,7 +167,7 @@
     }else{
       Village.disabled = true;
     }
-    if(set.has("Apt/Suite")){
+    if(set.has("AptSuite")){
       AptSuite.disabled = false;
     }else{
       AptSuite.disabled = true;
@@ -220,41 +220,19 @@
   }
 
 
-  const res = []
-  var searchCountries = ""
-
-  if(selectUSA) res.append("usa")
-  if(selectIndia) res.append("india")
-  if(selectSpain) res.append("spain")
-  if(selectJapan) res.append("japan")
-  if(selectGermany) res.append("germany")
-  if(selectSKorea) res.append("skorea")
-  if(selectNKorea) res.append("nkorea")
-  if(selectBrazil) res.append("brazil")
-  if(selectUK) res.append("uk")
-  if(selectMexico) res.append("mexico")
-  if(selectCanada) res.append("canada")
-
-
-  for (let i = 0; i < res.length; i++){
-    searchCountries += res[i] + " ";
-  }
-
-
-
   function submitForm(){
 
   var firstName = document.getElementById("First Name").value
   var LastName = document.getElementById("Last Name").value
   var Street = document.getElementById("Street").value
-  var BuildingHouseNo = document.getElementById("Building/House No").value
+  var BuildingHouseNo = document.getElementById("BuildingHouseNo").value
   var Zip = document.getElementById("Zip").value
   var Quarter = document.getElementById("Quarter").value
   var Town = document.getElementById("Town").value
   var Neighborhood = document.getElementById("Neighborhood").value
   var Block = document.getElementById("Block").value
   var Village = document.getElementById("Village").value
-  var AptSuite = document.getElementById("Apt/Suite").value
+  var AptSuite = document.getElementById("AptSuite").value
   var State = document.getElementById("State").value
   var Sector = document.getElementById("Sector").value
   var Province = document.getElementById("Province").value
@@ -270,8 +248,8 @@
   var selectSpain = document.getElementById('spain').checked;
   var selectJapan = document.getElementById('japan').checked;
   var selectGermany = document.getElementById('germany').checked;
-  var selectSKorea = document.getElementById('skorea').checked;
-  var selectNKorea = document.getElementById('nkorea').checked;
+  var selectSKorea = document.getElementById('southkorea').checked;
+  var selectNKorea = document.getElementById('northkorea').checked;
   var selectBrazil = document.getElementById('brazil').checked;
   var selectUK = document.getElementById('uk').checked;
   var selectMexico = document.getElementById('mexico').checked;
@@ -285,8 +263,8 @@
   if(selectSpain) res.push("spain")
   if(selectJapan) res.push("japan")
   if(selectGermany) res.push("germany")
-  if(selectSKorea) res.push("skorea")
-  if(selectNKorea) res.push("nkorea")
+  if(selectSKorea) res.push("southkorea")
+  if(selectNKorea) res.push("northkorea")
   if(selectBrazil) res.push("brazil")
   if(selectUK) res.push("uk")
   if(selectMexico) res.push("mexico")
@@ -304,8 +282,8 @@
 
 
   const jsonTest = {"searchCountries" : searchCountries, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
-  "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
-  "Village" : Village, "Apt/Suite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
+  "BuildingHouseNo" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
+  "Village" : Village, "AptSuite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
   "City" : City, "Subdivision" : Subdivision, "Locality" : Locality, "Quadrant" : Quadrant, "Prefecture" : Prefecture}
 
 
@@ -324,16 +302,14 @@
         mode: 'no-cors'
      })
      .then(function(response){
-        return response.text();
+        return response.json;
      })
-     .then(function (text){
-        console.log(text);
+     .then(function (json){
+        console.log(json);
      })
      .catch(function(error){
         console.error(error);
      })
-
-
   })
 
 
