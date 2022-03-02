@@ -348,7 +348,8 @@
 
      fetch("https://address-search.azurewebsites.net/api/addresssearch",{
         method:"POST",
-        body:formData
+        body:formData,
+        mode: 'no-cors'
      })
      .then(function(response){
         return response.text();
