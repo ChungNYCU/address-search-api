@@ -4,21 +4,23 @@
 
 <h2 align="center">Address Search</h2>
 
+<P>
+   <input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()"><label for="usa">USA</label>
+   <input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()"><label for="usa">India</label>
+   <input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()"><label for="usa">Spain</label>
+   <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()"><label for="usa">Japan</label>
+   <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()"><label for="usa">Germany</label>
+   <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><label for="usa">Canada</label><br>
+   <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">South Korea</label>
+   <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">North Korea</label>
+   <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()"><label for="usa">Brazil</label>
+   <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()"><label for="usa">UK</label>
+   <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><label for="usa">Mexico</label><br>
+ </P>
+
 <form action="https://address-search.azurewebsites.net/api/addresssearch" method="post" id="myForm">
   <h2>Select a country(ies):</h2>
-  <P>
-    <input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()"><label for="usa">USA</label>
-    <input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()"><label for="usa">India</label>
-    <input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()"><label for="usa">Spain</label>
-    <input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()"><label for="usa">Japan</label>
-    <input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()"><label for="usa">Germany</label>
-    <input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><label for="usa">Canada</label><br>
-    <input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">South Korea</label>
-    <input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()"><label for="usa">North Korea</label>
-    <input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()"><label for="usa">Brazil</label>
-    <input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()"><label for="usa">UK</label>
-    <input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><label for="usa">Mexico</label><br>
-  </P>
+
 
   <h2>Provide a name:</h2>
   <p>
@@ -48,7 +50,7 @@
     POB: <input id="POB" name="POB" style=" width: 10%" type="text" autocomplete="off" disabled="true">
   </P>
   <button onclick="submitForm()" class="btn btn-info">Search</button>
-  <input type="hidden" id="searchCountries" name="searchCounties" value="">
+  <input type="hidden" id="searchCountries" name="searchCountries" value="">
 </form>
 
 <div class="results">
@@ -62,7 +64,7 @@
     }
   }
   function set_text_input() {
-    
+
     const usa = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"];
     const india = ["City", "Town", "Locality", "Street", "Zip"];
     const spain = ["City", "Town", "Street", "Zip", "Building/House No"];
@@ -122,7 +124,7 @@
     if(selectCanada){
       merge_array(res, canada);
     }
-    
+
     var set = new Set(res)
 
     if(set.has("Street")){
@@ -269,19 +271,100 @@
   for (let i = 0; i < res.length; i++){
     searchCountries += res[i] + " ";
   }
-  
-  const jsonTest = {"SearchCountries" : searchCountries, "First Name" : firstName, "Last Name" : LastName, "Street" : Street, 
-  "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
-  "Village" : Village, "Apt/Suite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB, 
-  "City" : City, "Subdivision" : Subdivision, "Locality" : Locality, "Quadrant" : Quadrant, "Prefecture" : Prefecture}
 
 
-  const J_result = JSON.stringify(jsonTest)
 
   function submitForm(){
 
+  var firstName = document.getElementById("First Name")
+  var LastName = document.getElementById("Last Name")
+  var Street = document.getElementById("Street")
+  var BuildingHouseNo = document.getElementById("Building/House No")
+  var Zip = document.getElementById("Zip")
+  var Quarter = document.getElementById("Quarter")
+  var Town = document.getElementById("Town")
+  var Neighborhood = document.getElementById("Neighborhood")
+  var Block = document.getElementById("Block")
+  var Village = document.getElementById("Village")
+  var AptSuite = document.getElementById("Apt/Suite")
+  var State = document.getElementById("State")
+  var Sector = document.getElementById("Sector")
+  var Province = document.getElementById("Province")
+  var POB = document.getElementById("POB")
+  var City = document.getElementById("City")
+  var Subdivision = document.getElementById("Subdivision")
+  var Locality = document.getElementById("Locality")
+  var Quadrant = document.getElementById("Quadrant")
+  var Prefecture = document.getElementById("Prefecture")
+
+  var selectUSA = document.getElementById('usa').checked;
+  var selectIndia = document.getElementById('india').checked;
+  var selectSpain = document.getElementById('spain').checked;
+  var selectJapan = document.getElementById('japan').checked;
+  var selectGermany = document.getElementById('germany').checked;
+  var selectSKorea = document.getElementById('skorea').checked;
+  var selectNKorea = document.getElementById('nkorea').checked;
+  var selectBrazil = document.getElementById('brazil').checked;
+  var selectUK = document.getElementById('uk').checked;
+  var selectMexico = document.getElementById('mexico').checked;
+  var selectCanada = document.getElementById('canada').checked;
+
+  var res = []
+  var searchCountries = ""
+
+  if(selectUSA) res.push("usa")
+  if(selectIndia) res.push("india")
+  if(selectSpain) res.push("spain")
+  if(selectJapan) res.push("japan")
+  if(selectGermany) res.push("germany")
+  if(selectSKorea) res.push("skorea")
+  if(selectNKorea) res.push("nkorea")
+  if(selectBrazil) res.push("brazil")
+  if(selectUK) res.push("uk")
+  if(selectMexico) res.push("mexico")
+  if(selectCanada) res.push("canada")
+
+
+  for (let i = 0; i < res.length; i++){
+    searchCountries += res[i] + " ";
   }
 
+  document.getElementById('searchCountries').value = searchCountries;
+
+  const jsonTest = {"SearchCountries" : searchCountries, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
+  "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
+  "Village" : Village, "Apt/Suite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
+  "City" : City, "Subdivision" : Subdivision, "Locality" : Locality, "Quadrant" : Quadrant, "Prefecture" : Prefecture}
+
+
+//   const myJSON =  JSON.stringify(jsonTest);
+
+  const myForm = document.getElementById("myForm");
+
+  myForm.addEventListener("submit",function(e){
+     e.preventDefault();
+
+     const formData = new FormData(this);
+
+     fetch("https://address-search.azurewebsites.net/api/addresssearch",{
+        method:"POST",
+        body:formData
+     })
+     .then(function(response){
+        return response.text();
+     })
+     .then(function (text){
+        console.log(text);
+     })
+     .catch(function(error){
+        console.error(error);
+     })
+
+
+  })
+
+
+}
 
 </script>
 
