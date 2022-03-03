@@ -34,3 +34,46 @@ def find_match_address(req_body, json_database):
             search_result.append(address)
 
     return search_result
+
+
+def find_match_partial_address(req_body, json_database):
+
+    search_result = []
+
+    try:
+        country = req_body['searchCountry'].lower().strip()
+    except:
+        return []
+
+    if not(country):
+        return []
+    
+    try:
+        partial_address = req_body['partialAddress'].lower().strip().split(',')
+    except:
+        return []
+
+    partial_address = list(map(lambda x: x.strip(), partial_address))
+
+    for address in json_database:
+
+        isValid = True
+
+        if address['Country'].lower() != country:
+            continue
+
+        address_value = list(address.values())
+
+        for i in range(len(address_value)):
+            if address_value[i]:
+                address_value[i] = address_value[i].lower()
+
+        for i in partial_address:
+            if i not in address_value:
+                isValid = False
+                break
+
+        if isValid:
+            search_result.append(address)
+
+    return search_result
