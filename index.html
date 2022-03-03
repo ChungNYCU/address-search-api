@@ -164,8 +164,9 @@
         prefecture.disabled = true;
       }
     }
-    function generate_seachCountries(){
-      console.log("generate_seachCountries");
+
+    function generate_searchCountries(){
+      console.log("generate_searchCountries");
 
       var selectUSA = document.getElementById('usa').checked;
       var selectIndia = document.getElementById('india').checked;
@@ -213,7 +214,7 @@
       if (selectCanada) {
           q += 'Canada '
       }
-      document.getElementById('seachCountries').value = q;
+      document.getElementById('searchCountries').value = q;
       
       var firstName = document.getElementById("fname").value
       var LastName = document.getElementById("lname").value
@@ -237,13 +238,13 @@
       var Prefecture = document.getElementById("prefecture").value
 
 
-      const jsonTest = {"searchCountries" : q, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
+      const jsonTest = {"mode" : "AddressSearch", "searchCountries" : q, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
       "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
       "Village" : Village, "Apt/Suite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
       "City" : City, "Subdivision" : Subdivision, "Locality" : Locality, "Quadrant" : Quadrant, "Prefecture" : Prefecture}
 
 
-        const myJSON =  JSON.stringify(jsonTest);
+      const myJSON =  JSON.stringify(jsonTest);
       
       fetch("https://address-search.azurewebsites.net/api/addresssearch",{
             method: "POST",
@@ -255,7 +256,6 @@
         .then(function (json){
             document.getElementById("res").innerHTML = "";
             for (var i = 0; i < json.length; i++){
-              var count = 0;
               var div = document.createElement("div");
               var obj = json[i];
               var q = ''
@@ -285,6 +285,49 @@
             console.error(error);
         })
     }
+
+    function countrySpecificSearch(){
+      var select = document.getElementById("countries")
+      var searchCountry = select.options[select.selectedIndex].value;
+      var partialAddress = document.getElementById("countryPartialAddress").value
+
+      const jsonTest = {"mode" : "partialAddressSearch", "searchCountry" : searchCountry, "partialAddress" : partialAddress}
+
+      const myJSON = JSON.stringify(jsonTest)
+
+      fetch("https://address-search.azurewebsites.net/api/addresssearch",{
+            method: "POST",
+            body: myJSON
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function (json){
+            document.getElementById("res").innerHTML = "";
+            for (var i = 0; i < json.length; i++){
+              var count = 0;
+              var div = document.createElement("div");
+              var obj = json[i];
+              var q = ''
+              for (var key in obj){
+                if(key!='Country-ISO code' && key!='address code'){
+                  var value = obj[key];
+                  if(value!=null && value!=''){
+                    q += key +': ' + value + "<br/>"
+                  }
+                }
+              }
+              q += "<br/>" + "<br/>"
+              div.innerHTML = q.slice(0, -1);
+              document.getElementById("res").appendChild(div);
+            }
+            console.log(json);
+        })
+        .catch(function(error){
+            console.error(error);
+        })
+    }
+
   </script>
 </head>
 
@@ -295,19 +338,19 @@
   <h2>Select a country(ies):</h2>
   <table>
     <tr>
-      <td width="90"><input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()">USA</td>
-      <td width="90"><input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()">Canada</td>
-      <td width="90"><input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()">Japan</td>
-      <td width="90"><input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()">Germany</td>
-      <td width="110"><input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()">South Korea</td>
-      <td><input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()">India</td>    
+      <td width="90">USA:<input type="checkbox" id="usa" name="usa" class="form-control" onclick="set_text_input()"></td>
+      <td width="90">Canada:<input type="checkbox" id="canada" name="canada" class="form-control" onclick="set_text_input()"><br></td>
+      <td width="90">Japan:<input type="checkbox" id="japan" name="japan" class="form-control" onclick="set_text_input()"></td>
+      <td width="90">Germany:<input type="checkbox" id="germany" name="germany" class="form-control" onclick="set_text_input()"></td>
+      <td width="110">South Korea:<input type="checkbox" id="skorea" name="nskorea" class="form-control" onclick="set_text_input()"></td>
+      <td>India:<input type="checkbox" id="india" name="india" class="form-control" onclick="set_text_input()"></td>    
     </tr>
     <tr>
-      <td><input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()">UK</td>
-      <td><input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()">Spain</td>
-      <td><input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()">Brazil</td>
-      <td><input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()">Mexico</td>
-      <td><input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()">North Korea</td>
+      <td>UK:<input type="checkbox" id="uk" name="uk" class="form-control" onclick="set_text_input()"></td>
+      <td>Spain:<input type="checkbox" id="spain" name="spain" class="form-control" onclick="set_text_input()"></td>
+      <td>Brazil:<input type="checkbox" id="brazil" name="brazil" class="form-control" onclick="set_text_input()"></td>
+      <td>Mexico:<input type="checkbox" id="mexico" name="mexico" class="form-control" onclick="set_text_input()"><br></td>
+      <td>North Korea:<input type="checkbox" id="nkorea" name="nskorea" class="form-control" onclick="set_text_input()"></td>
     </tr>
   </table>
 
@@ -340,8 +383,28 @@
     Zip: <input id="zip" name="zip" style=" width: 10%" type="text" autocomplete="off" disabled="true">
     POB: <input id="pob" name="pob" style=" width: 10%" type="text" autocomplete="off" disabled="true">
   </P>
-  <button onclick="generate_seachCountries()" id='submit_btn'>Search</button>
-  <input type="hidden" id="seachCountries" name="searchCounties" value="">
+  <button onclick="generate_searchCountries()" id='submit_btn'>Search</button>
+  <input type="hidden" id="searchCountries" name="searchCounties" value="">
+
+  <div>
+    <h2>Enter country specific partial address</h2>
+    Select Country: <select name="countries" id="countries"><br><br>
+    <option value="usa">USA</option>
+    <option value="brazil">Brazil</option>
+    <option value="japan">Japan</option>
+    <option value="southkorea">South Korea</option>
+    <option value="northkorea">North Korea</option>
+    <option value="uk">UK</option>
+    <option value="germany">Germany</option>
+    <option value="india">India</option>
+    <option value="spain">Spain</option>
+    <option value="mexico">Mexico</option>
+    <option value="canada">Canada</option>
+    </select>
+    <br>
+    Country Specific Partial Address: <br><br><input id="countryPartialAddress" type = "text" size="200"><br><br>
+    <button onclick="countrySpecificSearch()" id="submit_btn2">Search Partial Address</button>
+  </div>
 
   <h2>Search results:</h2>
   <div id="res"></div>
