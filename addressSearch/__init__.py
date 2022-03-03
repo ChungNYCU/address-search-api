@@ -25,10 +25,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     except Exception as e:
         return func.HttpResponse("Cannot load database: " + str(e), status_code=400)
 
-    try:
-        search_result = searcher.find_match_address(req_body, data)
-    except Exception as e:
-        return func.HttpResponse("Cannot search address: " + str(e), status_code=400)
+    if(req_body['mode'] == 'AddressSearch'):
+        try:
+            search_result = searcher.find_match_address(req_body, data)
+        except Exception as e:
+            return func.HttpResponse("Cannot search address: " + str(e), status_code=400)
 
-    
+    if(req_body['mode'] == 'partialAddressSearch'):
+        try:
+            search_result = searcher.find_match_partial_address(req_body, data)
+        except Exception as e:
+            return func.HttpResponse("Cannot search address: " + str(e), status_code=400)
+
     return func.HttpResponse(json.dumps(search_result, skipkeys = True, allow_nan = True, indent = 6), status_code=200)
