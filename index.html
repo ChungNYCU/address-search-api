@@ -77,91 +77,109 @@
         street.disabled = false;
       }else{
         street.disabled = true;
+        document.getElementById("street").value = null;
       }
       if(set.has("Building/House No")){
         bhn.disabled = false;
       }else{
         bhn.disabled = true;
+        document.getElementById("bhn").value = null;
       }
       if(set.has("Zip")){
         zip.disabled = false;
       }else{
         zip.disabled = true;
+        document.getElementById("zip").value = null;
       }
       if(set.has("Quarter")){
         quarter.disabled = false;
       }else{
         quarter.disabled = true;
+        document.getElementById("quarter").value = null;
       }
       if(set.has("Town")){
         town.disabled = false;
       }else{
         town.disabled = true;
+        document.getElementById("town").value = null;
       }
       if(set.has("Neighborhood")){
         neighborhood.disabled = false;
       }else{
         neighborhood.disabled = true;
+        document.getElementById("neighborhood").value = null;
       }
       if(set.has("Block")){
         block.disabled = false;
       }else{
         block.disabled = true;
+        document.getElementById("block").value = null;
       }
       if(set.has("Village")){
         village.disabled = false;
       }else{
         village.disabled = true;
+        document.getElementById("village").value = null;
       }
       if(set.has("Apt/Suite")){
         as.disabled = false;
       }else{
         as.disabled = true;
+        document.getElementById("as").value = null;
       }
       if(set.has("State")){
         state.disabled = false;
       }else{
         state.disabled = true;
+        document.getElementById("state").value = null;
       }
       if(set.has("Sector")){
         sector.disabled = false;
       }else{
         sector.disabled = true;
+        document.getElementById("sector").value = null;
       }
       if(set.has("Province")){
         province.disabled = false;
       }else{
         province.disabled = true;
+        document.getElementById("province").value = null;
       }
       if(set.has("POB")){
         pob.disabled = false;
       }else{
         pob.disabled = true;
+        document.getElementById("pob").value = null;
       }
       if(set.has("City")){
         city.disabled = false;
       }else{
         city.disabled = true;
+        document.getElementById("city").value = null;
       }
       if(set.has("Subdivision")){
         subdivision.disabled = false;
       }else{
         subdivision.disabled = true;
+        document.getElementById("subdivision").value = null;
       }
       if(set.has("Locality")){
         locality.disabled = false;
       }else{
         locality.disabled = true;
+        document.getElementById("locality").value = null;
       }
       if(set.has("Quadrant")){
         quadrant.disabled = false;
       }else{
         quadrant.disabled = true;
+        document.getElementById("quadrant").value = null;
       }
       if(set.has("Prefecture")){
         prefecture.disabled = false;
       }else{
         prefecture.disabled = true;
+        document.getElementById("prefecture").value = null;
       }
     }
 
@@ -179,6 +197,18 @@
       var selectUK = document.getElementById('uk').checked;
       var selectMexico = document.getElementById('mexico').checked;
       var selectCanada = document.getElementById('canada').checked;
+
+      document.getElementById('usa').checked = false;
+      document.getElementById('india').checked = false;
+      document.getElementById('spain').checked = false;
+      document.getElementById('japan').checked = false;
+      document.getElementById('germany').checked = false;
+      document.getElementById('skorea').checked = false;
+      document.getElementById('nkorea').checked = false;
+      document.getElementById('brazil').checked = false;
+      document.getElementById('uk').checked = false;
+      document.getElementById('mexico').checked = false;
+      document.getElementById('canada').checked = false;
   
       q = ''
       if (selectUSA) {
@@ -237,6 +267,27 @@
       var Quadrant = document.getElementById("quadrant").value
       var Prefecture = document.getElementById("prefecture").value
 
+      document.getElementById("fname").value = null;
+      document.getElementById("lname").value = null;
+      document.getElementById("street").value = null;
+      document.getElementById("bhn").value = null;
+      document.getElementById("zip").value = null;
+      document.getElementById("quarter").value = null;
+      document.getElementById("town").value = null;
+      document.getElementById("neighborhood").value = null;
+      document.getElementById("block").value = null;
+      document.getElementById("village").value = null;
+      document.getElementById("as").value = null;
+      document.getElementById("state").value = null;
+      document.getElementById("sector").value = null;
+      document.getElementById("province").value = null;
+      document.getElementById("pob").value = null;
+      document.getElementById("city").value = null;
+      document.getElementById("subdivision").value = null;
+      document.getElementById("locality").value = null;
+      document.getElementById("quadrant").value = null;
+      document.getElementById("prefecture").value = null;
+
 
       const jsonTest = {"mode" : "AddressSearch", "searchCountries" : q, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
       "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
@@ -283,6 +334,10 @@
       var select = document.getElementById("countries")
       var searchCountry = select.options[select.selectedIndex].value;
       var partialAddress = document.getElementById("countryPartialAddress").value
+
+      var dropDown = document.getElementById("countries");
+      dropDown.selectedIndex = 0;
+      document.getElementById("countryPartialAddress").value = null;
 
       const jsonTest = {"mode" : "partialAddressSearch", "searchCountry" : searchCountry, "partialAddress" : partialAddress}
 
@@ -382,6 +437,7 @@
   <div>
     <h2>Enter country specific partial address</h2>
     Select Country: <select name="countries" id="countries"><br><br>
+    <option value="---">---</option>
     <option value="usa">USA</option>
     <option value="brazil">Brazil</option>
     <option value="japan">Japan</option>
