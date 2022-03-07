@@ -4,27 +4,16 @@ import random
 def getRandomValue(addr):
     n = random.randint(0, len(addr))
     print(addr[n - 1])
-
-
 def getRandomNumber(title, num):
     print(title + str(random.randint(0, 100)))
-
 def getRandomEvenNumber():
     print(random.randrange(0, 1000, 2))
-
-
 def getJapanZip():
     print(str(random.randint(100, 999)) + "-" + str(random.randint(1000, 9999)))
-
-
 def getBrazilZip():
     print(str(random.randint(10000, 99999)) + "-" + str(random.randint(100, 999)))
-
-
 def getCanadaUnit():
     print(str(random.randint(10, 99)) + "-" + str(random.randint(100, 999)))
-
-
 def getRandomPostalCode():
     abc = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
            "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -38,13 +27,9 @@ def getRandomPostalCode():
     randstr6 = abc[random.randint(0, num)]
 
     print(randstr+randstr1+randstr2+randstr6+ " " +randstr3+randstr4+randstr5)
-
 def getKoreaZip():
     print(str(random.randint(100, 999)) + "-" + str(random.randint(100, 999)))
-
-
 countries = ["Brazil", "Canada", "Germany", "India", "Japan", "North and South Korea", "Mexico", "Spain", "UK", "USA"]
-
 usaStates = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN",
              "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM",
              "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UM", "UT", "VA", "VI", "VT", "WA",
@@ -53,7 +38,6 @@ usaCities = ["New York", "Los Angelos", "Chicago", "Houston", "Phoenix", "San An
              "Dallas", "Austin", "San Jose", "Fort Worth", "Jacksonville", "Charlotte", "Columbus", "Indianapolis",
              "San Francisco", "Seattle", "Denver", "Washington", "Boston", "El Paso", "Nashville", "Oklahoma City",
              "Las Vegas", "Portland", "Detroit", "Memphis"]
-
 japanPrefectures = ["Aichi", "Akita", "Aomori", "Chiba", "Ehime", "Fukui", "Fukuoka", "Fukushima", "Gifu", "Gunma",
                     "Hiroshima", "Hokkaidō", "Hyōgo", "Ibaraki", "Ishikawa",
                     "Iwate", "Kagawa", "Kagoshima", "Kanagawa", "Kumamoto", "Kyōto", "Kōchi", "Mie", "Miyagi", "Tokyo",
@@ -61,7 +45,6 @@ japanPrefectures = ["Aichi", "Akita", "Aomori", "Chiba", "Ehime", "Fukui", "Fuku
                     "Miyazaki", "Nara", "Okayama", "Okinawa", "Saitama", "Shiga", "Shimane", "Shizuoka", "Tochigi",
                     "Tokushima", "Tottori", "Toyama", "Wakayama", "Yamagata",
                     "Yamaguchi", "Ōita", "Ōsaka"]
-
 japanCities = ['Tokyo', 'Ōsaka', 'Nagoya', 'Yokohama', 'Fukuoka', 'Sapporo', 'Kyōto', 'Kōbe', 'Kawanakajima', 'Saitama',
                'Hiroshima', 'Sendai', 'Kitaku'
     , 'Chiba'
@@ -207,7 +190,6 @@ japanCities = ['Tokyo', 'Ōsaka', 'Nagoya', 'Yokohama', 'Fukuoka', 'Sapporo', 'K
     , 'Kadoma'
     , 'Nobeoka'
     , 'Kōnosu']
-
 japanTowns = ['Zaō',
               'Yuzawa',
               'Yuza',
@@ -507,7 +489,6 @@ japanTowns = ['Zaō',
               'Ōe',
               'Ōdai',
               'Ochi']
-
 brazilProvinces = ['AC',
                    'AL',
                    'AM',
