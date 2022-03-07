@@ -30,11 +30,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             search_result = searcher.find_match_address(req_body, data)
         except Exception as e:
             return func.HttpResponse("Cannot search address: " + str(e), status_code=400)
-
-    if(req_body['mode'] == 'partialAddressSearch'):
+    elif(req_body['mode'] == 'partialAddressSearch'):
         try:
             search_result = searcher.find_match_partial_address(req_body, data)
         except Exception as e:
-            return func.HttpResponse("Cannot search address: " + str(e), status_code=400)
+            return func.HttpResponse("Cannot search partial address: " + str(e), status_code=400)  
+    else:
+        return func.HttpResponse("Invalid search mode", status_code=400) 
 
     return func.HttpResponse(json.dumps(search_result, skipkeys = True, allow_nan = True, indent = 6), status_code=200)
