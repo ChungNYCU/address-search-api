@@ -17,7 +17,7 @@ def getJapanZip():
     print(str(random.randint(100, 999)) + "-" + str(random.randint(1000, 9999)))
 
 
-def getBarzilZip():
+def getBrazilZip():
     print(str(random.randint(10000, 99999)) + "-" + str(random.randint(100, 999)))
 
 
