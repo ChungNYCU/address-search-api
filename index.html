@@ -2,13 +2,31 @@
 <html>
   
 <head>
-  <script>
-    console.log("Start");
-    function merge_array(res, country){
-      for (const element of country) {
-          res.push(element);
-      }
+  <style>
+    body {
+      background-color: white;
+      color: black;
     }
+    
+    .dark-mode {
+      background-color: rgb(49, 49, 49);
+      color: white;
+    }
+    </style>
+  
+    <script>
+      console.log("Start");
+  
+      function darkMode() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+      function merge_array(res, country){
+        for (const element of country) {
+            res.push(element);
+        }
+      }
+
     function set_text_input() {
       
       const usa = ["State", "City", "Street", "Building/House No", "Apt/Suite", "Zip", "POB"];
@@ -398,7 +416,7 @@
 <body>
 
   <h2 align="center">Address Search</h2>
-
+  <button onclick="darkMode()">dark mode</button>
   <h2>Select a country(ies):</h2>
   <table>
     <tr>
