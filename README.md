@@ -8,10 +8,11 @@ This repository contains the documentation for [search address]() API.
 - [Resources](#2-resources)
   - [Search address](#21-search-address)
 - [Assumptions](#3-assumptions)
+- [Constraints](#4-constraints)
 
 ## 1. Overview
 
-The Search address API provides a service for search address in our database, which including Brazil, Canada, Germany, India, Japan, South Korea, Mexico, Spain, UK, USA.  
+The Search address API provides a service for search address in our database, which including Brazil, Canada, Germany, India, Japan, South Korea, North Korea, Mexico, Spain, UK, USA.  
 All requests are made to endpoints beginning:
 `https://address-search.azurewebsites.net/api/`
 
@@ -44,6 +45,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
  
 {
+"mode": "AddressSearch",
 "searchCountries": "usa japan canada india",
 "First Name": "",
 "Last Name": "",
@@ -165,7 +167,15 @@ Possible errors:
 
 | Error code | Description                                                                                        |
 | -----------|----------------------------------------------------------------------------------------------------|
-| 400        | User error, Request is incorrect or corrupt, or the server can't understand it.                               |
+| 400        | User error, Request is incorrect or corrupt, or the server can't understand it.                    |
+| 406        | Does not find any content following the criteria given by the user agent.                          |
+| 422        | the request was well-formed, the server was unable to follow it, due to semantic errors.           |
+| 503        | the server is currently not ready to handle the request.                                           |
 
 ## 3. Assumptions
-For our UI, the user can leave the first name and last name blank.
+1. The user can leave all text inputs blank except for the country.
+2. Form contains all the categories of an address. Once a country is selected, will let the user enter the categories that country has. If multiple countries are selected, will show the union categories.
+3. All of the data are stored in string format. No computation is needed and there are special categories that start with 0. Have to be consistent for all of the data stored.
+
+## 4. Constraints
+1. Limit countries to have a maximum of 200 addresses. Will start small and grow on top of that.
