@@ -215,18 +215,6 @@
       var selectUK = document.getElementById('uk').checked;
       var selectMexico = document.getElementById('mexico').checked;
       var selectCanada = document.getElementById('canada').checked;
-
-      // document.getElementById('usa').checked = false;
-      // document.getElementById('india').checked = false;
-      // document.getElementById('spain').checked = false;
-      // document.getElementById('japan').checked = false;
-      // document.getElementById('germany').checked = false;
-      // document.getElementById('skorea').checked = false;
-      // document.getElementById('nkorea').checked = false;
-      // document.getElementById('brazil').checked = false;
-      // document.getElementById('uk').checked = false;
-      // document.getElementById('mexico').checked = false;
-      // document.getElementById('canada').checked = false;
   
       q = ''
       if (selectUSA) {
@@ -285,28 +273,6 @@
       var Quadrant = document.getElementById("quadrant").value
       var Prefecture = document.getElementById("prefecture").value
 
-      // document.getElementById("fname").value = null;
-      // document.getElementById("lname").value = null;
-      // document.getElementById("street").value = null;
-      // document.getElementById("bhn").value = null;
-      // document.getElementById("zip").value = null;
-      // document.getElementById("quarter").value = null;
-      // document.getElementById("town").value = null;
-      // document.getElementById("neighborhood").value = null;
-      // document.getElementById("block").value = null;
-      // document.getElementById("village").value = null;
-      // document.getElementById("as").value = null;
-      // document.getElementById("state").value = null;
-      // document.getElementById("sector").value = null;
-      // document.getElementById("province").value = null;
-      // document.getElementById("pob").value = null;
-      // document.getElementById("city").value = null;
-      // document.getElementById("subdivision").value = null;
-      // document.getElementById("locality").value = null;
-      // document.getElementById("quadrant").value = null;
-      // document.getElementById("prefecture").value = null;
-
-
       const jsonTest = {"mode" : "AddressSearch", "searchCountries" : q, "First Name" : firstName, "Last Name" : LastName, "Street" : Street,
       "Building/House No" : BuildingHouseNo, "Zip" : Zip, "Quarter" : Quarter, "Town" : Town, "Neighborhood" : Neighborhood, "Block" : Block,
       "Village" : Village, "Apt/Suite" : AptSuite, "State" : State, "Sector" : Sector, "Province" : Province, "POB" : POB,
@@ -360,10 +326,6 @@
       var select = document.getElementById("countries")
       var searchCountry = select.options[select.selectedIndex].value;
       var partialAddress = document.getElementById("countryPartialAddress").value
-
-      // var dropDown = document.getElementById("countries");
-      // dropDown.selectedIndex = 0;
-      // document.getElementById("countryPartialAddress").value = null;
 
       const jsonTest = {"mode" : "partialAddressSearch", "searchCountry" : searchCountry, "partialAddress" : partialAddress}
 
@@ -444,8 +406,8 @@
       document.getElementById("quadrant").value = null;
       document.getElementById("prefecture").value = null;
 
-      document.getElementById("fname").disabled = true;
-      document.getElementById("lname").disabled = true;
+      // document.getElementById("fname").disabled = true;
+      // document.getElementById("lname").disabled = true;
       document.getElementById("street").disabled = true;
       document.getElementById("bhn").disabled = true;
       document.getElementById("zip").disabled = true;
