@@ -69,7 +69,7 @@ def find_match_partial_address(req_body, json_database):
                 address_value[i] = address_value[i].lower()
 
         for i in partial_address:
-            if i not in address_value:
+            if i.lower() not in address_value:
                 isValid = False
                 break
 
