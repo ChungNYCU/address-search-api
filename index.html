@@ -306,21 +306,29 @@
         })
         .then(function (json){
             document.getElementById("res").innerHTML = "";
-            for (var i = 0; i < json.length; i++){
-              var div = document.createElement("div");
-              var obj = json[i];
-              var q = ''
-              for (var key in obj){
-                if(key!='Country-ISO code' && key!='address code'){
-                  var value = obj[key];
-                  if(value!=null && value!=''){
-                    q += key +': ' + value + "<br/>"
+            if (json.length != 0){
+              for (var i = 0; i < json.length; i++){
+                var div = document.createElement("div");
+                var obj = json[i];
+                var q = ''
+                for (var key in obj){
+                  if(key!='Country-ISO code' && key!='address code'){
+                    var value = obj[key];
+                    if(value!=null && value!=''){
+                      q += key +': ' + value + "<br/>"
+                    }
                   }
                 }
-              }
-              q += "<br/>" + "<br/>"
-              div.innerHTML = q.slice(0, -1);
+                q += "<br/>" + "<br/>"
+                div.innerHTML = q.slice(0, -1);
 
+                document.getElementById("res").appendChild(div);
+              }
+            }
+            else{
+              var div = document.createElement("div");
+              var str = "No address found!"
+              div.innerHTML = str
               document.getElementById("res").appendChild(div);
             }
             console.log(json);
@@ -352,21 +360,29 @@
         })
         .then(function (json){
             document.getElementById("res").innerHTML = "";
-            for (var i = 0; i < json.length; i++){
-              var count = 0;
-              var div = document.createElement("div");
-              var obj = json[i];
-              var q = ''
-              for (var key in obj){
-                if(key!='Country-ISO code' && key!='address code'){
-                  var value = obj[key];
-                  if(value!=null && value!=''){
-                    q += key +': ' + value + "<br/>"
+            if (json.length != 0){
+              for (var i = 0; i < json.length; i++){
+                var count = 0;
+                var div = document.createElement("div");
+                var obj = json[i];
+                var q = ''
+                for (var key in obj){
+                  if(key!='Country-ISO code' && key!='address code'){
+                    var value = obj[key];
+                    if(value!=null && value!=''){
+                      q += key +': ' + value + "<br/>"
+                    }
                   }
                 }
+                q += "<br/>" + "<br/>"
+                div.innerHTML = q.slice(0, -1);
+                document.getElementById("res").appendChild(div);
               }
-              q += "<br/>" + "<br/>"
-              div.innerHTML = q.slice(0, -1);
+            }
+            else{
+              var div = document.createElement("div");
+              var str = "No address found!"
+              div.innerHTML = str
               document.getElementById("res").appendChild(div);
             }
             console.log(json);
